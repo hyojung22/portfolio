@@ -1,6 +1,6 @@
-import LeftPanel from './LeftPanel'
-import RightPanel from './RightPanel'
-import TabMenu from './TabMenu'
+import LeftPanel from '@/common/LeftPanel'
+import RightPanel from '@/common/RightPanel'
+import TabMenu from '@/common/TabMenu'
 
 export default function MinihompyLayout() {
   return (
@@ -18,28 +18,38 @@ export default function MinihompyLayout() {
             width: `${(282 / 1084) * 100}%`,
             height: `${(653 / 729) * 100}%`,
             padding: '20px 10px',
-            // backgroundColor: 'yellow',
           }}
         >
           <LeftPanel />
         </div>
 
-        {/* 오른쪽 패널 -  SVG rect x:328.5 y:38.5 width:714 height:655 기준으로 % 계산 */}
+        <div
+          className="absolute box-border"
+          style={{
+            left: `${(295 / 1084) * 100}%`,
+            top: `${(135 / 729) * 100}%`,
+            width: `${(55 / 1084) * 100}%`,
+            zIndex: 10,
+          }}
+        >
+          <BinderSvg />
+        </div>
+
+        {/* 오른쪽 패널 -  SVG rect x:328.5 y:38.5 width:714 height:653 기준으로 % 계산 */}
         <div
           className="absolute box-border"
           style={{
             left: `${(328.5 / 1084) * 100}%`,
             top: `${(38.5 / 729) * 100}%`,
             width: `${(714 / 1084) * 100}%`,
-            height: `${(655 / 729) * 100}%`,
+            height: `${(653 / 729) * 100}%`,
             padding: '20px 10px',
-            // backgroundColor: 'skyblue',
           }}
         >
           <RightPanel />
         </div>
       </div>
-      <div className="absolute top-23 -right-[25.5px] z-10">
+      <div className="absolute top-23 -right-[24.666px] z-10">
         <TabMenu />
       </div>
     </div>
@@ -81,6 +91,109 @@ function BookSvg({ className }: { className: string }) {
         rx="12"
         fill="#EEEEEE"
       />
+    </svg>
+  )
+}
+
+function BinderSvg() {
+  return (
+    <svg
+      // width="47"
+      // height="424"
+      viewBox="0 0 47 424"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="8" cy="8" r="7.5" fill="white" stroke="#7A7A7A" />
+      <circle cx="39" cy="8" r="7.5" fill="white" stroke="#7A7A7A" />
+      <rect
+        x="3.5"
+        y="3.5"
+        width="40"
+        height="9"
+        rx="4.5"
+        fill="url(#paint0_linear_47_96)"
+        stroke="#7A7A7A"
+      />
+      <circle cx="8" cy="52" r="7.5" fill="white" stroke="#7A7A7A" />
+      <circle cx="39" cy="52" r="7.5" fill="white" stroke="#7A7A7A" />
+      <rect
+        x="3.5"
+        y="47.5"
+        width="40"
+        height="9"
+        rx="4.5"
+        fill="url(#paint1_linear_47_96)"
+        stroke="#7A7A7A"
+      />
+      <circle cx="8" cy="371" r="7.5" fill="white" stroke="#7A7A7A" />
+      <circle cx="39" cy="371" r="7.5" fill="white" stroke="#7A7A7A" />
+      <rect
+        x="3.5"
+        y="366.5"
+        width="40"
+        height="9"
+        rx="4.5"
+        fill="url(#paint2_linear_47_96)"
+        stroke="#7A7A7A"
+      />
+      <circle cx="8" cy="416" r="7.5" fill="white" stroke="#7A7A7A" />
+      <circle cx="39" cy="416" r="7.5" fill="white" stroke="#7A7A7A" />
+      <rect
+        x="3.5"
+        y="411.5"
+        width="40"
+        height="9"
+        rx="4.5"
+        fill="url(#paint3_linear_47_96)"
+        stroke="#7A7A7A"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_47_96"
+          x1="15.8125"
+          y1="7.44444"
+          x2="30.2054"
+          y2="9.34122"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#C5C5C5" />
+          <stop offset="1" stopColor="#FDFDFD" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_47_96"
+          x1="15.8125"
+          y1="51.4444"
+          x2="30.2054"
+          y2="53.3412"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#C5C5C5" />
+          <stop offset="1" stopColor="#FDFDFD" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_47_96"
+          x1="15.8125"
+          y1="370.444"
+          x2="30.2054"
+          y2="372.341"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#C5C5C5" />
+          <stop offset="1" stopColor="#FDFDFD" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_47_96"
+          x1="15.8125"
+          y1="415.444"
+          x2="30.2054"
+          y2="417.341"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#C5C5C5" />
+          <stop offset="1" stopColor="#FDFDFD" />
+        </linearGradient>
+      </defs>
     </svg>
   )
 }

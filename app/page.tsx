@@ -1,12 +1,14 @@
-import MinihompyLayout from '@/components/layout/MinihompyLayout'
-import MusicPlayer from '@/components/layout/MusicPlayer'
+import MinihompyLayout from '@/common/MinihompyLayout'
+import MusicPlayer from '@/common/MusicPlayer'
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center min-h-screen">
+    <main className="flex min-h-screen items-center justify-center">
       <div className="flex items-center gap-10">
         <MinihompyLayout />
-        <MusicPlayer />
+        <aside>
+          <MusicPlayer />
+        </aside>
       </div>
     </main>
   )

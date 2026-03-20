@@ -1,6 +1,5 @@
 import { create } from 'zustand'
-
-type Tab = '홈' | '프로필' | '프로젝트'
+import { Tab } from '@/types'
 
 interface TabStore {
   activeTab: Tab

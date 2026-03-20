@@ -20,10 +20,14 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@components/*": ["./components/*"],
-      "@styles/*": ["./styles/*"],
-      "@lib/*": ["./lib/*"],
-      "@types/*": ["./types/*"]
+      "@/components/*": ["./components/*"],
+      "@/common/*": ["./components/layout/common/*"],
+      "@/constants/*": ["./constants/*"],
+      "@/tabs/*": ["./components/layout/tabs/*"],
+      "@/store/*": ["./store/*"],
+      "@/styles/*": ["./styles/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/types": ["./types/index"]
     }
   },
   "include": [
