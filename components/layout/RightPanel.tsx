@@ -1,9 +1,10 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
+import styled from 'styled-components'
+
 import { COLORS } from '@/constants/index'
 import { useTabStore } from '@/store/useTabStore'
-import styled from 'styled-components'
 import HomeTab from '@/tabs/HomeTab'
 import ProfileTab from '@/tabs/ProfileTab'
 import ProjectTab from '@/tabs/ProjectTab'
@@ -14,8 +15,14 @@ export default function RightPanel() {
   return (
     <section className="flex h-full flex-col">
       <div className="mb-1 flex">
-        <h2 className="font-bold" style={{ color: COLORS.rightPanelTitle }}>
-          ✨프론트엔드 개발자 입니다
+        <h2
+          className="-mt-2 text-2xl font-bold"
+          style={{
+            color: COLORS.homeTitle,
+            fontFamily: 'var(--font-pixel)',
+          }}
+        >
+          뿌요뿌요오~
         </h2>
       </div>
 
@@ -42,8 +49,8 @@ export default function RightPanel() {
 const ContentPanel = styled.div`
   box-sizing: border-box;
   height: 100%;
-  border-radius: 6px;
-  border: 2px solid ${COLORS.border};
-  background-color: #ffffff;
   overflow: hidden;
+  background-color: #ffffff;
+  border: 2px solid ${COLORS.border};
+  border-radius: 6px;
 `

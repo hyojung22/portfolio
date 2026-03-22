@@ -1,11 +1,12 @@
 'use client'
 
-import { COLORS, PROFILE_LINKS } from '@/constants'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import styled from 'styled-components'
+
+import { COLORS, PROFILE_LINKS } from '@/constants'
 
 export default function LeftHomeTab() {
   const router = useRouter()
@@ -97,14 +98,14 @@ const DashedDivider = styled.hr`
 `
 
 const LinkSelect = styled.select`
-  margin-top: 8px;
   width: 100%;
+  padding: 2px 4px;
+  margin-top: 8px;
   font-size: 12px;
+  cursor: pointer !important;
+  background-color: ${COLORS.selectBg};
   border: 1px solid ${COLORS.border};
   border-radius: 3px;
-  padding: 2px 4px;
-  background-color: ${COLORS.selectBg};
-  cursor: pointer;
 `
 
 function GenderSvg({ className }: { className?: string }) {

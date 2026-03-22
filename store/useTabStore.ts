@@ -1,5 +1,6 @@
 import { create } from 'zustand'
-import { Tab, SubMenu } from '@/types'
+
+import { SubMenu, Tab } from '@/types'
 
 interface TabStore {
   activeTab: Tab

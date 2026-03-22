@@ -1,11 +1,19 @@
 'use client'
 
 import styled from 'styled-components'
+
+import { COLORS, TABS } from '@/constants'
 import { useTabStore } from '@/store/useTabStore'
-import { TABS, COLORS } from '@/constants'
 
 export default function TabMenu() {
-  const { activeTab, setActiveTab } = useTabStore()
+  const { activeTab, setActiveTab, setActiveSubMenu } = useTabStore()
+
+  const handleTabClick = (tab: (typeof TABS)[number]) => {
+    setActiveTab(tab)
+    if (tab === '프로필') {
+      setActiveSubMenu('personal')
+    }
+  }
 
   return (
     <nav>
@@ -14,7 +22,7 @@ export default function TabMenu() {
           <TabItem
             key={tab}
             $isActive={activeTab === tab}
-            onClick={() => setActiveTab(tab)}
+            onClick={() => handleTabClick(tab)}
           >
             {tab}
           </TabItem>
@@ -40,17 +48,17 @@ const TabItem = styled.li<TabItemProps>`
   justify-content: center;
   width: 72px;
   height: 40px;
-  border-radius: 0 6px 6px 0;
-  cursor: pointer;
   font-size: 14px;
+  font-weight: ${({ $isActive }) => ($isActive ? '700' : '400')};
+  color: ${({ $isActive }) => ($isActive ? '#000000' : '#FFFFFF')};
   letter-spacing: -0.05em;
-  border: 2px solid ${COLORS.tabBorder};
-  border-left: none;
+  cursor: pointer !important;
 
   background-color: ${({ $isActive }) =>
     $isActive ? COLORS.tabActive : COLORS.tabInactive};
-  color: ${({ $isActive }) => ($isActive ? '#000000' : '#FFFFFF')};
-  font-weight: ${({ $isActive }) => ($isActive ? '700' : '400')};
+  border: 2px solid ${COLORS.tabBorder};
+  border-left: none;
+  border-radius: 0 6px 6px 0;
 
   box-shadow: ${({ $isActive }) =>
     $isActive ? 'none' : '2px 2px 0px rgba(0,0,0,0.2)'};

@@ -1,13 +1,14 @@
 'use client'
 
-import { COLORS, PROFILE_MENU } from '@/constants'
-import { Fragment, useState } from 'react'
-import styled from 'styled-components'
-import { LuChevronUp, LuChevronDown } from 'react-icons/lu'
-import { FiUser, FiBriefcase, FiAward } from 'react-icons/fi'
-import { IconType } from 'react-icons'
-import { useTabStore } from '@/store/useTabStore'
 import { AnimatePresence, motion } from 'framer-motion'
+import { Fragment, useState } from 'react'
+import { IconType } from 'react-icons'
+import { FiAward, FiBriefcase, FiUser } from 'react-icons/fi'
+import { LuChevronDown, LuChevronUp } from 'react-icons/lu'
+import styled from 'styled-components'
+
+import { COLORS, PROFILE_MENU } from '@/constants'
+import { useTabStore } from '@/store/useTabStore'
 
 const MENU_ICONS: Record<string, IconType> = {
   intro: FiUser,
@@ -79,7 +80,7 @@ export default function LeftProfileTab() {
                           <li key={sub.id}>
                             <a
                               href={`#${sub.id}`}
-                              className="text-sm hover:bg-yellow-200"
+                              className="cursor-pointer! text-sm hover:bg-yellow-200"
                               style={{
                                 marginLeft: '23px',
                                 color:
@@ -113,8 +114,12 @@ const CategoryRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
   padding: 4px 0;
+  cursor: pointer !important;
+
+  * {
+    cursor: pointer !important;
+  }
 
   &:hover {
     opacity: 0.7;
@@ -125,5 +130,5 @@ const DashedDivider = styled.hr`
   width: 100%;
   margin: 5px 0;
   border: none;
-  border-top: 1px dashed ${COLORS.border};
+  border-top: 1px dashed ${COLORS.gray100};
 `

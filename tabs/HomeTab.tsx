@@ -1,9 +1,12 @@
-import { COLORS, MY_WORDS } from '@/constants'
+'use client'
+
 import styled from 'styled-components'
+
+import { COLORS, MY_WORDS } from '@/constants'
 
 export default function HomeTab() {
   return (
-    <>
+    <div className="mr-2 ml-4">
       {/* Mini Room 섹션 */}
       <section>
         <h3 className="font-bold" style={{ color: COLORS.panelSubTitle }}>
@@ -44,7 +47,7 @@ export default function HomeTab() {
           ))}
         </WordList>
       </section>
-    </>
+    </div>
   )
 }
 
@@ -56,19 +59,19 @@ const WordList = styled.ul`
 `
 
 const WordItem = styled.li`
-  padding-left: 16px;
   position: relative;
-  color: ${COLORS.gray500};
+  padding-left: 16px;
   font-weight: 500;
+  color: ${COLORS.gray500};
 
   &::before {
-    content: '';
     position: absolute;
-    left: 0;
     top: 50%;
-    transform: translateY(-50%);
+    left: 0;
     width: 6px;
     height: 6px;
+    content: '';
     background-color: ${COLORS.gray100};
+    transform: translateY(-50%);
   }
 `

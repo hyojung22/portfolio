@@ -1,8 +1,9 @@
 'use client'
 
+import styled from 'styled-components'
+
 import { COLORS } from '@/constants/index'
 import { useTabStore } from '@/store/useTabStore'
-import styled from 'styled-components'
 import LeftHomeTab from '@/tabs/LeftHomeTab'
 import LeftProfileTab from '@/tabs/LeftProfileTab'
 
@@ -37,8 +38,8 @@ interface PanelWrapperProps {
 const PanelWrapper = styled.section<PanelWrapperProps>`
   box-sizing: border-box;
   height: 100%;
-  border-radius: 6px;
-  border: 2px solid ${COLORS.border};
   background-color: ${({ $isProfile }) =>
     $isProfile ? COLORS.white : COLORS.panelBg};
+  border: 2px solid ${COLORS.border};
+  border-radius: 6px;
 `

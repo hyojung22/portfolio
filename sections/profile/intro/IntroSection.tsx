@@ -1,6 +1,9 @@
-import { COLORS } from '@/constants'
+'use client'
+
 import Image from 'next/image'
 import { useState } from 'react'
+
+import { COLORS } from '@/constants'
 
 export default function IntroSection() {
   const name = ['최', '효', '정']
@@ -32,7 +35,7 @@ export default function IntroSection() {
             className="inline-block"
             style={{
               color: COLORS.panelSubTitle,
-              cursor: 'pointer',
+              cursor: 'default',
               animation: isHovered
                 ? `wave 0.6s ease-in-out 1 ${i * 0.15}s both`
                 : 'none',

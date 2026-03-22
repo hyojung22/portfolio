@@ -1,6 +1,10 @@
+'use client'
+
 import { AnimatePresence, motion } from 'framer-motion'
-import IntroSection from '@/sections/profile/IntroSection'
-import ExperienceSection from '@/sections/profile/ExperienceSection'
+
+import ExperienceSection from '@/sections/profile/experience/ExperienceSection'
+import IntroSection from '@/sections/profile/intro/IntroSection'
+import SpecSection from '@/sections/profile/spec/SpecSection'
 import { useTabStore } from '@/store/useTabStore'
 
 export default function ProfileTab() {
@@ -9,7 +13,13 @@ export default function ProfileTab() {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={activeSubMenu === 'education' ? 'work' : activeSubMenu}
+        key={
+          activeSubMenu === 'education'
+            ? 'work'
+            : activeSubMenu === 'certificate' || activeSubMenu === 'award'
+              ? 'skills'
+              : activeSubMenu
+        }
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
@@ -20,6 +30,9 @@ export default function ProfileTab() {
         {(activeSubMenu === 'work' || activeSubMenu === 'education') && (
           <ExperienceSection />
         )}
+        {(activeSubMenu === 'skills' ||
+          activeSubMenu === 'certificate' ||
+          activeSubMenu === 'award') && <SpecSection />}
       </motion.div>
     </AnimatePresence>
   )

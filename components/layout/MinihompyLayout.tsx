@@ -11,7 +11,7 @@ export default function MinihompyLayout() {
       <div className="absolute top-0 left-0 flex h-full w-full">
         {/* 왼쪽 패널 - SVG rect x:36.5 y:38.5 width:282 height:653 기준으로 % 계산 */}
         <div
-          className="absolute box-border"
+          className="absolute mt-1 box-border"
           style={{
             left: `${(36.5 / 1084) * 100}%`,
             top: `${(38.5 / 729) * 100}%`,
@@ -24,7 +24,7 @@ export default function MinihompyLayout() {
         </div>
 
         <div
-          className="absolute box-border"
+          className="absolute mt-1 box-border"
           style={{
             left: `${(295 / 1084) * 100}%`,
             top: `${(135 / 729) * 100}%`,
@@ -37,7 +37,7 @@ export default function MinihompyLayout() {
 
         {/* 오른쪽 패널 -  SVG rect x:328.5 y:38.5 width:714 height:653 기준으로 % 계산 */}
         <div
-          className="absolute box-border"
+          className="absolute mt-1 box-border"
           style={{
             left: `${(328.5 / 1084) * 100}%`,
             top: `${(38.5 / 729) * 100}%`,
@@ -49,7 +49,7 @@ export default function MinihompyLayout() {
           <RightPanel />
         </div>
       </div>
-      <div className="absolute top-23 -right-[24.666px] z-10">
+      <div className="absolute top-23 -right-6.5 z-10 mt-1">
         <TabMenu />
       </div>
     </div>
