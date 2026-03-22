@@ -1,4 +1,4 @@
-import MinihompyLayout from '@/common/MinihompyLayout'
+import MinihompyLayout from '@/layout/MinihompyLayout'
 import MusicPlayer from '@/common/MusicPlayer'
 
 export default function Home() {
