@@ -50,7 +50,7 @@ const TabItem = styled.li<TabItemProps>`
   background-color: ${({ $isActive }) =>
     $isActive ? COLORS.tabActive : COLORS.tabInactive};
   color: ${({ $isActive }) => ($isActive ? '#000000' : '#FFFFFF')};
-  font-weight: ${({ $isActive }) => ($isActive ? '900' : '600')};
+  font-weight: ${({ $isActive }) => ($isActive ? '700' : '400')};
 
   box-shadow: ${({ $isActive }) =>
     $isActive ? 'none' : '2px 2px 0px rgba(0,0,0,0.2)'};

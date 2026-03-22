@@ -1,6 +1,6 @@
-import LeftPanel from '@/common/LeftPanel'
-import RightPanel from '@/common/RightPanel'
-import TabMenu from '@/common/TabMenu'
+import LeftPanel from '@/layout/LeftPanel'
+import RightPanel from '@/layout/RightPanel'
+import TabMenu from '@/layout/TabMenu'
 
 export default function MinihompyLayout() {
   return (

@@ -13,7 +13,7 @@ export default function LeftPanel() {
     <aside className="flex h-full flex-col">
       <div
         className="mt-1 mb-2 flex justify-center gap-3 text-xs"
-        style={{ fontFamily: 'var(--font-pixel)', color: COLORS.gray }}
+        style={{ fontFamily: 'var(--font-pixel)', color: COLORS.gray500 }}
       >
         <span>TODAY</span>
         <span>TOTAL</span>

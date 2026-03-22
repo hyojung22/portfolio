@@ -1,5 +1,6 @@
 'use client'
 
+import { AnimatePresence, motion } from 'framer-motion'
 import { COLORS } from '@/constants/index'
 import { useTabStore } from '@/store/useTabStore'
 import styled from 'styled-components'
@@ -19,9 +20,20 @@ export default function RightPanel() {
       </div>
 
       <ContentPanel className="p-3">
-        {activeTab === '홈' && <HomeTab />}
-        {activeTab === '프로필' && <ProfileTab />}
-        {activeTab === '프로젝트' && <ProjectTab />}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            style={{ height: '100%' }}
+          >
+            {activeTab === '홈' && <HomeTab />}
+            {activeTab === '프로필' && <ProfileTab />}
+            {activeTab === '프로젝트' && <ProjectTab />}
+          </motion.div>
+        </AnimatePresence>
       </ContentPanel>
     </section>
   )
@@ -33,4 +45,5 @@ const ContentPanel = styled.div`
   border-radius: 6px;
   border: 2px solid ${COLORS.border};
   background-color: #ffffff;
+  overflow: hidden;
 `
