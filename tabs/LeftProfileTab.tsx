@@ -1,0 +1,129 @@
+'use client'
+
+import { COLORS, PROFILE_MENU } from '@/constants'
+import { Fragment, useState } from 'react'
+import styled from 'styled-components'
+import { LuChevronUp, LuChevronDown } from 'react-icons/lu'
+import { FiUser, FiBriefcase, FiAward } from 'react-icons/fi'
+import { IconType } from 'react-icons'
+import { useTabStore } from '@/store/useTabStore'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const MENU_ICONS: Record<string, IconType> = {
+  intro: FiUser,
+  experience: FiBriefcase,
+  spec: FiAward,
+}
+
+export default function LeftProfileTab() {
+  const { activeSubMenu, setActiveSubMenu } = useTabStore()
+  const [openId, setOpenId] = useState<string[]>(['intro'])
+
+  const handleToggle = (id: string) => {
+    setOpenId((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
+    )
+  }
+
+  return (
+    <div>
+      <h3 className="font-bold" style={{ color: COLORS.panelSubTitle }}>
+        프로필
+      </h3>
+      <hr
+        className="mt-3 border font-bold"
+        style={{ borderColor: COLORS.panelSubTitle }}
+      />
+      <nav className="mt-2">
+        <ul className="pr-2 pl-2">
+          {PROFILE_MENU.map((menu) => {
+            const Icon = MENU_ICONS[menu.id]
+
+            return (
+              <Fragment key={menu.id}>
+                <li>
+                  <CategoryRow onClick={() => handleToggle(menu.id)}>
+                    <span
+                      className="flex items-center gap-2 font-bold"
+                      style={{ color: COLORS.rightPanelTitle }}
+                    >
+                      <Icon size={14} color={COLORS.gray200} strokeWidth={3} />
+                      {menu.label}
+                    </span>
+                    <span
+                      className="text-sm font-bold"
+                      style={{
+                        color: openId.includes(menu.id)
+                          ? COLORS.orange
+                          : COLORS.gray100,
+                      }}
+                    >
+                      {openId.includes(menu.id) ? (
+                        <LuChevronUp size={20} strokeWidth={3} />
+                      ) : (
+                        <LuChevronDown size={20} strokeWidth={3} />
+                      )}
+                    </span>
+                  </CategoryRow>
+
+                  {openId.includes(menu.id) && (
+                    <AnimatePresence>
+                      <motion.ul
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2, ease: 'easeInOut' }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        {menu.subMenu.map((sub) => (
+                          <li key={sub.id}>
+                            <a
+                              href={`#${sub.id}`}
+                              className="text-sm hover:bg-yellow-200"
+                              style={{
+                                marginLeft: '23px',
+                                color:
+                                  activeSubMenu === sub.id
+                                    ? COLORS.panelSubTitle
+                                    : COLORS.gray500,
+                                fontWeight:
+                                  activeSubMenu === sub.id ? 700 : 400,
+                              }}
+                              onClick={() => setActiveSubMenu(sub.id)}
+                            >
+                              {sub.label}
+                            </a>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    </AnimatePresence>
+                  )}
+                </li>
+                <DashedDivider />
+              </Fragment>
+            )
+          })}
+        </ul>
+      </nav>
+    </div>
+  )
+}
+
+const CategoryRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 4px 0;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
+const DashedDivider = styled.hr`
+  width: 100%;
+  margin: 5px 0;
+  border: none;
+  border-top: 1px dashed ${COLORS.border};
+`
