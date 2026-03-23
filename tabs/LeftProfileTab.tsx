@@ -17,7 +17,12 @@ const MENU_ICONS: Record<string, IconType> = {
 }
 
 export default function LeftProfileTab() {
-  const { activeSubMenu, setActiveSubMenu } = useTabStore()
+  const {
+    setActiveSubMenu,
+    highlightedSubMenu,
+    setHighlightedSubMenu,
+    triggerScroll,
+  } = useTabStore()
   const [openId, setOpenId] = useState<string[]>(['intro'])
 
   const handleToggle = (id: string) => {
@@ -84,13 +89,17 @@ export default function LeftProfileTab() {
                               style={{
                                 marginLeft: '23px',
                                 color:
-                                  activeSubMenu === sub.id
+                                  highlightedSubMenu === sub.id
                                     ? COLORS.panelSubTitle
                                     : COLORS.gray500,
                                 fontWeight:
-                                  activeSubMenu === sub.id ? 700 : 400,
+                                  highlightedSubMenu === sub.id ? 700 : 400,
                               }}
-                              onClick={() => setActiveSubMenu(sub.id)}
+                              onClick={() => {
+                                setActiveSubMenu(sub.id)
+                                setHighlightedSubMenu(sub.id)
+                                triggerScroll(sub.id)
+                              }}
                             >
                               {sub.label}
                             </a>

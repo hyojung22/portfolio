@@ -6,12 +6,14 @@ import { COLORS, TABS } from '@/constants'
 import { useTabStore } from '@/store/useTabStore'
 
 export default function TabMenu() {
-  const { activeTab, setActiveTab, setActiveSubMenu } = useTabStore()
+  const { activeTab, setActiveTab, setActiveSubMenu, setHighlightedSubMenu } =
+    useTabStore()
 
   const handleTabClick = (tab: (typeof TABS)[number]) => {
     setActiveTab(tab)
     if (tab === '프로필') {
       setActiveSubMenu('personal')
+      setHighlightedSubMenu('personal')
     }
   }
 

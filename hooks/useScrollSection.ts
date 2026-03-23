@@ -3,44 +3,60 @@ import { useEffect, useRef } from 'react'
 import { useTabStore } from '@/store/useTabStore'
 
 export function useScrollSection() {
-  const { activeSubMenu, setActiveSubMenu } = useTabStore()
+  const { scrollTrigger, setHighlightedSubMenu } = useTabStore()
   const containerRef = useRef<HTMLDivElement>(null)
   const eduRef = useRef<HTMLElement>(null)
+  const isScrollingRef = useRef(false)
 
   // 탭 클릭 시 스크롤 이동
   useEffect(() => {
-    if (activeSubMenu === 'work') {
-      containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-    if (activeSubMenu === 'education') {
-      eduRef.current?.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [activeSubMenu])
+    if (!scrollTrigger) return
 
-  // 스크롤 위치에 따라 activeSubMenu 자동 변경
+    const timer = setTimeout(() => {
+      if (scrollTrigger.target === 'work') {
+        isScrollingRef.current = true
+        containerRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+        setTimeout(() => {
+          isScrollingRef.current = false
+        }, 600)
+      }
+      if (scrollTrigger.target === 'education') {
+        isScrollingRef.current = true
+        eduRef.current?.scrollIntoView({ behavior: 'smooth' })
+        setTimeout(() => {
+          isScrollingRef.current = false
+        }, 600)
+      }
+    }, 50)
+
+    return () => clearTimeout(timer)
+  }, [scrollTrigger])
+
+  // 스크롤 위치에 따라 왼쪽 패널 표시 변경
   useEffect(() => {
+    const container = containerRef.current
     const eduEl = eduRef.current
-    if (!eduEl) return
+    if (!container || !eduEl) return
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // 교육이력 섹션이 화면에 50% 이상 보이면 education으로
-        if (entry.isIntersecting) {
-          setActiveSubMenu('education')
-        } else {
-          setActiveSubMenu('work')
-        }
-      },
-      {
-        root: containerRef.current, // 스크롤 컨테이너 기준
-        threshold: 0.85,
-      },
-    )
+    const handleScroll = () => {
+      if (isScrollingRef.current) return
 
-    observer.observe(eduEl)
+      const { scrollTop } = container
 
-    return () => observer.disconnect()
-  }, [setActiveSubMenu])
+      // 교육이력 섹션 위치 기준
+      const eduTop = eduEl.offsetTop
+      if (scrollTop >= eduTop - 200) {
+        setHighlightedSubMenu('education')
+        return
+      }
+
+      // 맨 위 -> work
+      setHighlightedSubMenu('work')
+    }
+
+    container.addEventListener('scroll', handleScroll)
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [setHighlightedSubMenu])
 
   return { containerRef, eduRef }
 }

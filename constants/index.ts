@@ -1,5 +1,6 @@
 export const TABS = ['홈', '프로필', '프로젝트'] as const
 export type Tab = (typeof TABS)[number]
+export * from './awards'
 export * from './certificates'
 export * from './experience'
 export * from './skills'

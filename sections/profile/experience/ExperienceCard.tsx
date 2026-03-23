@@ -9,7 +9,7 @@ interface Props {
   no: number
   title: string
   period: string
-  image: string
+  image?: string
   role: string
   tasks: readonly string[]
   skills?: readonly string[]
@@ -37,13 +37,15 @@ export default function ExperienceCard({
       </CardHeader>
 
       <CardBody $isLast={isLast}>
-        <Image
-          className="self-start"
-          src={image}
-          alt={title}
-          width={80}
-          height={80}
-        />
+        {image && (
+          <Image
+            className="self-start"
+            src={image}
+            alt={title}
+            width={80}
+            height={80}
+          />
+        )}
         <div>
           <Role>{role}</Role>
           {skills && skills.length > 0 && (
