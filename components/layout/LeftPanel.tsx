@@ -6,6 +6,7 @@ import { COLORS } from '@/constants/index'
 import { useTabStore } from '@/store/useTabStore'
 import LeftHomeTab from '@/tabs/LeftHomeTab'
 import LeftProfileTab from '@/tabs/LeftProfileTab'
+import LeftProjectTab from '@/tabs/LeftProjectTab'
 
 export default function LeftPanel() {
   const { activeTab } = useTabStore()
@@ -19,12 +20,15 @@ export default function LeftPanel() {
         <span>TODAY</span>
         <span>TOTAL</span>
       </div>
-      <PanelWrapper className="p-3" $isProfile={activeTab === '프로필'}>
+      <PanelWrapper
+        className="p-3"
+        $isProfile={activeTab === '프로필' || activeTab === '프로젝트'}
+      >
         <h2 className="sr-only">프로필</h2>
         <div className="rounded-me flex h-full flex-col bg-white p-3">
           {activeTab === '홈' && <LeftHomeTab />}
           {activeTab === '프로필' && <LeftProfileTab />}
-          {activeTab === '프로젝트' && <LeftHomeTab />}
+          {activeTab === '프로젝트' && <LeftProjectTab />}
         </div>
       </PanelWrapper>
     </aside>

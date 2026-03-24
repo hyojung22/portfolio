@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { SubMenu, Tab } from '@/types'
+import { ProjectMenu, SubMenu, Tab } from '@/types'
 
 interface TabStore {
   activeTab: Tab
@@ -13,6 +13,9 @@ interface TabStore {
 
   scrollTrigger: { target: SubMenu; timestamp: number } | null
   triggerScroll: (target: SubMenu) => void
+
+  activeProjectMenu: ProjectMenu
+  setActiveProjectMenu: (menu: ProjectMenu) => void
 }
 
 export const useTabStore = create<TabStore>((set) => ({
@@ -27,4 +30,7 @@ export const useTabStore = create<TabStore>((set) => ({
   scrollTrigger: null,
   triggerScroll: (target) =>
     set({ scrollTrigger: { target, timestamp: Date.now() } }),
+
+  activeProjectMenu: 'all',
+  setActiveProjectMenu: (menu) => set({ activeProjectMenu: menu }),
 }))

@@ -1,4 +1,4 @@
-import { PROFILE_MENU } from '@/constants'
+import { PROFILE_MENU, PROJECT_MENU } from '@/constants'
 
 export type Tab = '홈' | '프로필' | '프로젝트'
 
@@ -7,3 +7,5 @@ export interface ProfileLink {
   label: string
   value: string
 }
+
+export type ProjectMenu = (typeof PROJECT_MENU)[number]['id']

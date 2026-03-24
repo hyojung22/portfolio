@@ -3,6 +3,7 @@ export type Tab = (typeof TABS)[number]
 export * from './awards'
 export * from './certificates'
 export * from './experience'
+export * from './projects'
 export * from './skills'
 
 export const PROFILE_LINKS = [
@@ -62,4 +63,10 @@ export const PROFILE_MENU = [
       { id: 'award', label: '수상이력' },
     ],
   },
+] as const
+
+export const PROJECT_MENU = [
+  { id: 'all', label: '전체 프로젝트' },
+  { id: 'team', label: '팀 프로젝트' },
+  { id: 'solo', label: '개인 프로젝트' },
 ] as const
