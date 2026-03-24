@@ -16,13 +16,13 @@ export default function RightPanel() {
     <section className="flex h-full flex-col">
       <div className="mb-1 flex">
         <h2
-          className="-mt-2 text-2xl font-bold"
+          className="-mt-2 ml-4 text-2xl font-bold"
           style={{
             color: COLORS.homeTitle,
             fontFamily: 'var(--font-pixel)',
           }}
         >
-          뿌요뿌요오~
+          반가워요 ヽ(´▽｀)/ 개발자 최효정입니다
         </h2>
       </div>
 
@@ -52,5 +52,5 @@ const ContentPanel = styled.div`
   overflow: hidden;
   background-color: #ffffff;
   border: 2px solid ${COLORS.border};
-  border-radius: 6px;
+  border-radius: 10px;
 `

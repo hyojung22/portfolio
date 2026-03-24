@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import styled from 'styled-components'
 
 import { COLORS } from '@/constants'
 
@@ -9,26 +10,43 @@ export default function IntroSection() {
   const name = ['최', '효', '정']
   const lines = [
     '사용자가 편리하게 쓸 수 있는',
-    '서비스를 만들고 싶은 프론트엔드 개발자입니다.',
+    '서비스를 만드는 것이 목표입니다.',
     'React를 중심으로 화면을 설계하고 구현하며,',
-    'Next.js를 익히며 한 단계씩 성장하고 있습니다.',
+    '꾸준히 성장하는 중입니다.',
   ]
   const [isHovered, setIsHovered] = useState(false)
 
   return (
     <section className="relative flex h-full w-full flex-col items-center justify-center gap-8">
-      <Image
-        src="/images/profile2.png"
-        alt="프로필이미지"
-        width={150}
-        height={150}
-      />
+      <div className="relative flex items-center justify-center">
+        <Image
+          src="/images/profile/profile2.png"
+          alt="프로필이미지"
+          width={150}
+          height={150}
+        />
+        {/* 별 위치 absolute로 조절 */}
+        <PixelStar delay="0s" style={{ top: '-20px', left: '10px' }} />
+        <PixelStar delay="0.3s" style={{ top: '-10px', right: '0px' }} />
+        <PixelStar delay="0.6s" style={{ top: '20px', left: '-25px' }} />
+        <PixelStar delay="0.9s" style={{ bottom: '0px', left: '5px' }} />
+        <PixelStar
+          delay="1.2s"
+          style={{ bottom: '-15px', right: '10px' }}
+          size={10}
+        />
+        <PixelStar
+          delay="1.5s"
+          style={{ top: '50px', right: '-20px' }}
+          size={8}
+        />
+      </div>
       <h3
         className="text-2xl font-bold"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        안녕하세요, 프론트엔드 개발자{' '}
+        안녕하세요, 개발자{' '}
         {name.map((char, i) => (
           <span
             key={i}
@@ -54,5 +72,44 @@ export default function IntroSection() {
         ))}
       </p>
     </section>
+  )
+}
+
+const Twinkle = styled.div<{ $delay: string }>`
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(0.4);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  animation: twinkle 1.5s ease-in-out infinite;
+  animation-delay: ${({ $delay }) => $delay};
+`
+
+function PixelStar({
+  size = 16,
+  color = '#ff9ebc',
+  delay = '0s',
+  style,
+}: {
+  size?: number
+  color?: string
+  delay?: string
+  style?: React.CSSProperties
+}) {
+  return (
+    <Twinkle $delay={delay} style={{ position: 'absolute', ...style }}>
+      <svg width={size} height={size} viewBox="0 0 16 16" fill={color}>
+        <rect x="7" y="0" width="2" height="16" />
+        <rect x="0" y="7" width="16" height="2" />
+        <rect x="6" y="2" width="4" height="12" opacity="0.4" />
+        <rect x="2" y="6" width="12" height="4" opacity="0.4" />
+      </svg>
+    </Twinkle>
   )
 }

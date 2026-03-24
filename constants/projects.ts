@@ -1,3 +1,16 @@
+export type ProjectSlide =
+  | { type: 'single'; src: string }
+  | { type: 'group'; images: string[] }
+
+export interface SkillCategories {
+  Frontend?: string[]
+  Backend?: string[]
+  Database?: string[]
+  AI?: string[]
+  Mobile?: string[]
+  Design?: string[]
+}
+
 export interface Project {
   id: string
   year: number
@@ -10,9 +23,12 @@ export interface Project {
   desc: string
   tasks: string[]
   skills: string[]
+  skillCategories: SkillCategories
+  mySkills: string[]
   type: string
   role: string
   platform: 'Web' | 'App' | 'Mobile'
+  images?: ProjectSlide[]
   githubUrl?: string
   deployUrl?: string
   readmeUrl?: string
@@ -44,10 +60,29 @@ export const PROJECTS: Project[] = [
       'framer-motion',
       'Tailwind CSS',
     ],
+    skillCategories: {
+      Frontend: [
+        'Next.js',
+        'TypeScript',
+        'styled-components',
+        'Zustand',
+        'framer-motion',
+        'Tailwind CSS',
+      ],
+    },
+    mySkills: [
+      'Next.js',
+      'TypeScript',
+      'styled-components',
+      'Zustand',
+      'framer-motion',
+      'Tailwind CSS',
+    ],
     type: '개인',
     role: '개인 프로젝트',
     platform: 'Web',
-    githubUrl: '',
+    images: [],
+    githubUrl: 'https://github.com/hyojung22/portfolio',
     deployUrl: '',
     readmeUrl: '',
   },
@@ -83,11 +118,33 @@ export const PROJECTS: Project[] = [
       'FastAPI',
       'LangChain',
       'Gemini 2.5 Pro',
+      'Figma',
     ],
+    skillCategories: {
+      Frontend: ['TypeScript', 'React', 'Tailwind CSS', 'Jotai'],
+      Backend: ['Java', 'Spring Boot', 'Spring Security', 'JPA'],
+      Database: ['MySQL', 'Redis'],
+      AI: ['Python', 'FastAPI', 'LangChain', 'Gemini 2.5 Pro'],
+      Design: ['Figma'],
+    },
+    mySkills: ['Java', 'Spring Boot', 'JPA', 'Figma'],
     type: '팀 5명',
     role: 'PM · 백엔드 담당 · UI/UX 디자인 · 산출문서',
     platform: 'Web',
-    githubUrl: '',
+    images: [
+      { type: 'single', src: '/images/project/iroomclass/iroomclass2.png' },
+      { type: 'single', src: '/images/project/iroomclass/iroomclass5.png' },
+      {
+        type: 'group',
+        images: [
+          '/images/project/iroomclass/iroomclass7.png',
+          '/images/project/iroomclass/iroomclass8.png',
+          '/images/project/iroomclass/iroomclass9.png',
+          '/images/project/iroomclass/iroomclass11.png',
+        ],
+      },
+    ],
+    githubUrl: 'https://github.com/brain1401/iroom-backend-springboot',
     deployUrl: '',
     readmeUrl: '',
   },
@@ -99,7 +156,7 @@ export const PROJECTS: Project[] = [
     ongoing: false,
     title: 'GlobalGo - 소상공인 AI 수출 어드바이저',
     badge: 'team',
-    award: '🏆 관세청 공공데이터 활용 경진대회 장려상',
+    award: '🏆 공모전 장려상',
     desc: '소상공인이 쉽고 간편하게 해외 이커머스 시장에 상품을 등록하고 수출할 수 있도록 돕는 웹 기반 수출 지원 플랫폼.',
     tasks: [
       'React 기반 SPA 설계 및 홈페이지 구현',
@@ -109,6 +166,9 @@ export const PROJECTS: Project[] = [
     ],
     skills: [
       'React',
+      'JavaScript',
+      'CSS Modules',
+      'Vite',
       'Java',
       'Spring Boot',
       'Spring Security',
@@ -118,12 +178,28 @@ export const PROJECTS: Project[] = [
       'Redis',
       'Python',
       'FastAPI',
+      'Figma',
     ],
+    skillCategories: {
+      Frontend: ['React', 'JavaScript', 'CSS Modules', 'Vite'],
+      Backend: ['Java', 'Spring Boot', 'Spring Security', 'JPA', 'JWT'],
+      Database: ['MySQL', 'Redis'],
+      AI: ['Python', 'FastAPI'],
+      Design: ['Figma'],
+    },
+    mySkills: ['React', 'JavaScript', 'CSS Modules', 'Vite', 'Figma'],
     type: '팀 4명',
     role: '프론트엔드 담당 · UI/UX 디자인 · 산출문서',
     platform: 'Web',
-    githubUrl: '',
-    deployUrl: '',
+    images: [
+      { type: 'single', src: '/images/project/globalgo/globalgo1.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo2.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo3.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo4.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo5.png' },
+    ],
+    githubUrl: 'https://github.com/2025-SMHRD-SW-FullStack/Aha_Aha_Proj',
+    deployUrl: 'http://globalgo.it.com:5173/',
     readmeUrl: '',
   },
   {
@@ -150,11 +226,39 @@ export const PROJECTS: Project[] = [
       'Socket.io',
       'JWT',
       'MySQL',
+      'Figma',
     ],
+    skillCategories: {
+      Mobile: ['Kotlin', 'Retrofit'],
+      Backend: ['Node.js', 'Express', 'Socket.io', 'JWT'],
+      Database: ['MySQL'],
+      Design: ['Figma'],
+    },
+    mySkills: ['Kotlin', 'Figma'],
     type: '팀 5명',
     role: '프론트엔드 담당 · UI/UX 디자인',
     platform: 'App',
-    githubUrl: '',
+    images: [
+      {
+        type: 'group',
+        images: [
+          '/images/project/senimo/senimo1.png',
+          '/images/project/senimo/senimo2.png',
+          '/images/project/senimo/senimo3.png',
+          '/images/project/senimo/senimo4.png',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/senimo/senimo5.png',
+          '/images/project/senimo/senimo6.png',
+          '/images/project/senimo/senimo7.png',
+          '/images/project/senimo/senimo8.png',
+        ],
+      },
+    ],
+    githubUrl: 'https://github.com/2023-AISCHOOL-APP/Senimo',
     deployUrl: '',
     readmeUrl: '',
   },
@@ -181,10 +285,58 @@ export const PROJECTS: Project[] = [
       'Oracle',
       'Python',
       'Jupyter',
+      'Illustrator',
     ],
+    skillCategories: {
+      Frontend: ['React', 'KakaoMap Maps API'],
+      Backend: ['Flask'],
+      Database: ['MariaDB', 'Oracle'],
+      AI: ['Python', 'Jupyter'],
+      Design: ['Illustrator'],
+    },
+    mySkills: ['React', 'KakaoMap Maps API', 'Illustrator'],
     type: '팀 5명',
     role: '프론트엔드 담당 · UI/UX 디자인',
     platform: 'Web',
+    images: [
+      {
+        type: 'group',
+        images: [
+          '/images/project/jjapji/jjapji1.png',
+          '/images/project/jjapji/jjapji2.jpg',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/jjapji/jjapji3.png',
+          '/images/project/jjapji/jjapji4.png',
+          '/images/project/jjapji/jjapji5.png',
+        ],
+      },
+      { type: 'single', src: '/images/project/jjapji/jjapji6.png' },
+      {
+        type: 'group',
+        images: [
+          '/images/project/jjapji/jjapji7.png',
+          '/images/project/jjapji/jjapji8.png',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/jjapji/jjapji9.png',
+          '/images/project/jjapji/jjapji10.png',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/jjapji/jjapji11.png',
+          '/images/project/jjapji/jjapji12.png',
+        ],
+      },
+    ],
     githubUrl: '',
     deployUrl: '',
     readmeUrl: '',

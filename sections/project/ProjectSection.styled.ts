@@ -110,14 +110,19 @@ export const DiaryEntry = styled.div<{ $hasProj: boolean }>`
   border: 1px solid #ddd;
   transition: border-color 0.15s;
 
+  * {
+    cursor: pointer !important;
+  }
+
   &:hover {
     border-color: ${COLORS.panelSubTitle};
   }
 `
 export const DiaryDateBar = styled.div`
-  padding: 3px 12px 15px;
-  font-size: 14px;
-  font-weight: 700;
+  padding: 0 12px 12px;
+  font-family: var(--font-pixel);
+  font-size: 18px;
+  font-weight: 600;
   color: ${COLORS.panelSubTitle};
   border-bottom: 1.5px dashed #eee;
 `
@@ -170,6 +175,7 @@ export const SkillsText = styled.span`
 `
 export const NoProj = styled.div`
   padding: 30px 0;
+  padding-right: 10px;
   margin-top: 10px;
   font-size: 14px;
   color: #bbb;

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Project, PROJECTS } from '@/constants'
 import { useTabStore } from '@/store/useTabStore'
 
+import ProjectModal from './ProjectModal'
 import {
   Badge,
   DiaryBody,
@@ -60,6 +61,7 @@ export default function ProjectSection() {
   )
   const [curIdx, setCurIdx] = useState(years.length - 1)
   const [direction, setDirection] = useState(0)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
   const curYear = years[curIdx]
 
@@ -160,7 +162,11 @@ export default function ProjectSection() {
               <NoProj>해당 연도에 프로젝트가 없습니다.</NoProj>
             ) : (
               filtered.map((p) => (
-                <DiaryEntry key={p.id} $hasProj={filtered.length === 1}>
+                <DiaryEntry
+                  key={p.id}
+                  $hasProj={filtered.length === 1}
+                  onClick={() => setSelectedProject(p)}
+                >
                   <DiaryDateBar>{getDateLabel(p)}</DiaryDateBar>
                   <DiaryBody>
                     <DiaryTitle>{p.title}</DiaryTitle>
@@ -171,7 +177,10 @@ export default function ProjectSection() {
                       {p.badge === 'team' ? '팀' : '개인'}
                     </Badge>
                     {/* {p.award && <AwardTag>{p.award}</AwardTag>} */}
-                    <SkillsText>{p.skills.slice(0, 4).join(' · ')}</SkillsText>
+                    <SkillsText>
+                      {p.skills.slice(0, 4).join(' · ')}
+                      {p.skills.length > 4 ? ' ...' : ''}
+                    </SkillsText>
                   </DiaryFooter>
                 </DiaryEntry>
               ))
@@ -179,6 +188,14 @@ export default function ProjectSection() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* 모달 */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </div>
   )
 }

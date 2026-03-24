@@ -83,8 +83,7 @@ export default function LeftProfileTab() {
                       >
                         {menu.subMenu.map((sub) => (
                           <li key={sub.id}>
-                            <a
-                              href={`#${sub.id}`}
+                            <span
                               className="cursor-pointer! text-sm hover:bg-yellow-200"
                               style={{
                                 marginLeft: '23px',
@@ -102,7 +101,7 @@ export default function LeftProfileTab() {
                               }}
                             >
                               {sub.label}
-                            </a>
+                            </span>
                           </li>
                         ))}
                       </motion.ul>

@@ -49,7 +49,7 @@ export default function MinihompyLayout() {
           <RightPanel />
         </div>
       </div>
-      <div className="absolute top-23 -right-6.5 z-10 mt-1">
+      <div className="absolute top-23 -right-[25.5px] z-10 mt-1">
         <TabMenu />
       </div>
     </div>

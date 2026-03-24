@@ -1,7 +1,7 @@
 export const WORK_EXPERIENCE = [
   {
     id: 1,
-    image: '/images/company.svg',
+    image: '/images/profile/company.svg',
     company: '팔칠구삼',
     period: '2024-08 - 2024.12 (5개월)',
     role: '개발부서 / 인턴(일경험드림)',
@@ -17,7 +17,7 @@ export const WORK_EXPERIENCE = [
 export const EDUCATION = [
   {
     id: 1,
-    image: '/images/smart.svg',
+    image: '/images/profile/smart.svg',
     school: '스마트인재개발원',
     course: 'Full Stack SW 융합 실무 부트캠프',
     period: '2025.03 - 2025.09',
@@ -29,7 +29,7 @@ export const EDUCATION = [
   },
   {
     id: 2,
-    image: '/images/ai.svg',
+    image: '/images/profile/ai.svg',
     school: '인공지능사관학교',
     course: 'AI 기반 웹 서비스 - 모바일 App 특화과정',
     period: '2023.06 - 2023.12',

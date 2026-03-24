@@ -28,8 +28,9 @@ export default function LeftHomeTab() {
     <div className="flex h-full flex-col items-center justify-between gap-2 rounded-md bg-white p-3">
       <div className="mb-2 flex-1">
         <Image
-          className="rounded-xl"
-          src="/images/profile.png"
+          className="rounded-[3px]"
+          src="/images/home/profile.png"
+          loading="eager"
           alt="프로필사진"
           width={150}
           height={150}
@@ -38,8 +39,34 @@ export default function LeftHomeTab() {
 
       <DashedDivider />
 
+      <div
+        className="flex w-full flex-row items-center justify-between"
+        style={{
+          padding: '2.5px 10px 2px',
+          borderRadius: '5px',
+          border: '1.3px solid #ccc',
+        }}
+      >
+        <span
+          className="font-bold"
+          style={{
+            color: COLORS.panelSubTitle,
+            fontFamily: 'var(--font-pixel)',
+            letterSpacing: 1.5,
+            fontSize: '9.5px',
+            transform: 'scaleY(0.8)', // 0.7 = 세로 70%로 압축
+            transformOrigin: 'left center',
+            display: 'inline-block',
+          }}
+        >
+          TODAY IS..
+        </span>
+        <span className="text-[10px]">🩷</span>
+        <span className="text-[13px] font-medium">설레임</span>
+      </div>
+
       <address className="w-full flex-3 not-italic">
-        <p className="mb-1 flex items-center gap-2 text-sm">
+        <p className="mt-5.5 mb-1 flex items-center gap-2 text-sm">
           <FiMapPin size={12} color={COLORS.gray500} />
           광주 북구 운암동
         </p>
@@ -69,7 +96,7 @@ export default function LeftHomeTab() {
         </div>
 
         <p
-          className="w-full text-xs font-bold"
+          className="w-full text-xs font-medium"
           style={{ fontFamily: 'var(--font-pixel)', color: COLORS.orange }}
         >
           pusj22@naver.com
@@ -105,7 +132,6 @@ const LinkSelect = styled.select`
   cursor: pointer !important;
   background-color: ${COLORS.selectBg};
   border: 1px solid ${COLORS.border};
-  border-radius: 3px;
 `
 
 function GenderSvg({ className }: { className?: string }) {
