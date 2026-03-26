@@ -122,8 +122,8 @@ export default function MusicPlayer() {
             }}
           />
         </TitleIcon>
-        <TitleTextWrapper>
-          <TitleText>
+        <TitleTextWrapper $isPlaying={isPlaying}>
+          <TitleText $isPlaying={isPlaying}>
             {currentTrack.artist} - {currentTrack.title}
           </TitleText>
         </TitleTextWrapper>

@@ -6,7 +6,7 @@ import React from 'react'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import styled from 'styled-components'
 
-import { COLORS, PROFILE_LINKS } from '@/constants'
+import { ABOUT_ME, COLORS, PROFILE_LINKS } from '@/constants'
 
 export default function LeftHomeTab() {
   const router = useRouter()
@@ -68,11 +68,11 @@ export default function LeftHomeTab() {
       <address className="w-full flex-3 not-italic">
         <p className="mt-5.5 mb-1 flex items-center gap-2 text-sm">
           <FiMapPin size={12} color={COLORS.gray500} />
-          광주 북구 운암동
+          {ABOUT_ME.contact.location}
         </p>
         <p className="flex items-center gap-2 text-sm">
           <FiPhone size={12} color={COLORS.gray500} />
-          010-8441-7214
+          {ABOUT_ME.contact.phone}
         </p>
       </address>
 
@@ -84,11 +84,11 @@ export default function LeftHomeTab() {
             className="text-base font-bold"
             style={{ color: COLORS.rightPanelTitle }}
           >
-            최효정
+            {ABOUT_ME.name}
           </span>
           <GenderSvg className="shrink-0" />
           <span className="text-xs font-bold" style={{ color: COLORS.gray500 }}>
-            1995.07.21
+            {ABOUT_ME.contact.birth}
           </span>
           <span className="text-xs font-bold" style={{ color: COLORS.orange }}>
             (+)
@@ -99,7 +99,7 @@ export default function LeftHomeTab() {
           className="w-full text-xs font-medium"
           style={{ fontFamily: 'var(--font-pixel)', color: COLORS.orange }}
         >
-          pusj22@naver.com
+          {ABOUT_ME.contact.email}
         </p>
 
         {/* 이력서 / GitHub 이동 선택창 */}

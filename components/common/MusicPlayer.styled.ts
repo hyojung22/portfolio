@@ -42,30 +42,23 @@ export const TitleIcon = styled.span`
   color: #666;
 `
 
-export const TitleTextWrapper = styled.div`
+export const TitleTextWrapper = styled.div<{ $isPlaying: boolean }>`
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  -webkit-mask-image: ${({ $isPlaying }) =>
+    $isPlaying
+      ? 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+      : 'none'};
+  mask-image: ${({ $isPlaying }) =>
+    $isPlaying
+      ? 'linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)'
+      : 'none'};
 `
 
-export const TitleText = styled.span`
+export const TitleText = styled.span<{ $isPlaying: boolean }>`
   display: inline-block;
   width: 100%;
   overflow: hidden;
@@ -73,7 +66,8 @@ export const TitleText = styled.span`
   font-size: 11px;
   color: #333;
   white-space: nowrap;
-  animation: marquee 8s linear infinite;
+  animation: ${({ $isPlaying }) =>
+    $isPlaying ? 'marquee 8s linear infinite' : 'none'};
 
   @keyframes marquee {
     0% {
