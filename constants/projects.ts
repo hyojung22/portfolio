@@ -11,6 +11,11 @@ export interface SkillCategories {
   Design?: string[]
 }
 
+// 이력서에 들어갈 내용
+export interface SkillKeyword {
+  name: string
+  description: string
+}
 export interface Project {
   id: string
   year: number
@@ -32,9 +37,11 @@ export interface Project {
   githubUrl?: string
   deployUrl?: string
   readmeUrl?: string
+  skillKeywords?: SkillKeyword[]
 }
 
 export const PROJECTS: Project[] = [
+  // 포트폴리오
   {
     id: 'portfolio',
     year: 2026,
@@ -85,7 +92,25 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/hyojung22/portfolio',
     deployUrl: '',
     readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'Zustand',
+        description:
+          '탭·서브메뉴 등 여러 컴포넌트에서 공유되는 전역 상태 관리에 사용했습니다.',
+      },
+      {
+        name: 'framer-motion AnimatePresence',
+        description:
+          'mode="wait"로 탭 전환 시 자연스러운 슬라이드 애니메이션을 적용했습니다.',
+      },
+      {
+        name: 'createPortal',
+        description:
+          '모달을 document.body에 직접 렌더링해 z-index 충돌을 방지했습니다.',
+      },
+    ],
   },
+  // iRoomClass
   {
     id: 'iroomclass',
     year: 2025,
@@ -147,7 +172,25 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/brain1401/iroom-backend-springboot',
     deployUrl: '',
     readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'JPA Repository 쿼리 메서드',
+        description:
+          '메서드 이름으로 쿼리를 자동 생성해 반복적인 SQL 작성을 줄였습니다.',
+      },
+      {
+        name: 'Swagger',
+        description:
+          'API 명세를 코드와 함께 관리해 팀원 간 연동 오류를 최소화했습니다.',
+      },
+      {
+        name: 'DTO 패턴',
+        description:
+          'Entity를 직접 노출하지 않고 DTO로 변환해 API 응답 구조를 분리했습니다.',
+      },
+    ],
   },
+  // GlobalGo
   {
     id: 'globalgo',
     year: 2025,
@@ -201,7 +244,20 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/2025-SMHRD-SW-FullStack/Aha_Aha_Proj',
     deployUrl: 'http://globalgo.it.com:5173/',
     readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'Context API',
+        description:
+          '수출 가이드 폼의 상태를 전역으로 관리해 prop drilling을 방지했습니다.',
+      },
+      {
+        name: '커스텀 훅',
+        description:
+          'API 호출 로직을 훅으로 분리해 컴포넌트에서 UI 로직에만 집중할 수 있게 했습니다.',
+      },
+    ],
   },
+  // Senimo
   {
     id: 'senimo',
     year: 2023,
@@ -261,7 +317,25 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/2023-AISCHOOL-APP/Senimo',
     deployUrl: '',
     readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'Retrofit',
+        description:
+          'REST API 통신을 인터페이스 기반으로 정의해 타입 안전하게 서버와 데이터를 주고받았습니다.',
+      },
+      {
+        name: 'RecyclerView',
+        description:
+          'ViewHolder 패턴으로 모임 목록을 효율적으로 렌더링하고 스크롤 성능을 최적화했습니다.',
+      },
+      {
+        name: 'Navigation Component',
+        description:
+          'NavGraph로 Fragment 전환을 관리해 화면 흐름을 일관성 있게 구성했습니다.',
+      },
+    ],
   },
+  // JJapJi
   {
     id: 'jjapji',
     year: 2023,
@@ -340,5 +414,17 @@ export const PROJECTS: Project[] = [
     githubUrl: '',
     deployUrl: '',
     readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'MarkerClusterer',
+        description:
+          '마커가 많을 때 자동으로 클러스터링해 지도 가독성과 성능을 개선했습니다.',
+      },
+      {
+        name: 'CustomOverlayMap',
+        description:
+          '마커 클릭 시 커스텀 말풍선으로 상세 정보와 외부 링크를 표시했습니다.',
+      },
+    ],
   },
 ]

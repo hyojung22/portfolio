@@ -1,4 +1,13 @@
-export const AWARD = [
+export interface Award {
+  id: number
+  image: string
+  title: string
+  period: string
+  issuer: string
+  contents?: string[]
+}
+
+export const AWARD: Award[] = [
   {
     id: 1,
     image: '',
@@ -10,4 +19,4 @@ export const AWARD = [
       '소상공인 대상 AI 기반 수출 지원 웹 서비스(GlobalGo) 개발',
     ],
   },
-] as const
+]

@@ -1,9 +1,19 @@
-export const WORK_EXPERIENCE = [
+export interface WorkExperience {
+  id: number
+  image?: string
+  company: string
+  period: string
+  role: string
+  skills: string[]
+  tasks?: string[]
+}
+
+export const WORK_EXPERIENCE: WorkExperience[] = [
   {
     id: 1,
     image: '/images/profile/company.svg',
     company: '팔칠구삼',
-    period: '2024-08 - 2024.12 (5개월)',
+    period: '2024.08 - 2024.12',
     role: '개발부서 / 인턴(일경험드림)',
     skills: ['Java', 'Kotlin', 'Android Studio'],
     tasks: [
@@ -12,9 +22,18 @@ export const WORK_EXPERIENCE = [
       '화면설계서 작성부터 실제 화면 개발까지 앱 개발 전체 흐름을 경험',
     ],
   },
-] as const
+]
 
-export const EDUCATION = [
+export interface Education {
+  id: number
+  image?: string
+  school: string
+  course: string
+  period: string
+  tasks?: string[]
+}
+
+export const EDUCATION: Education[] = [
   {
     id: 1,
     image: '/images/profile/smart.svg',
@@ -39,4 +58,10 @@ export const EDUCATION = [
       '머신러닝/딥러닝 기초 교육',
     ],
   },
-] as const
+  {
+    id: 3,
+    school: '을지대학교(성남)',
+    course: '피부관리학과',
+    period: '2014.03 - 2018.02',
+  },
+]

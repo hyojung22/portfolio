@@ -1,6 +1,6 @@
 export type CertCategory = '개발' | '디자인' | '기타'
 
-export interface Cetificate {
+export interface Certificates {
   id: number
   name: string
   issuer: string
@@ -8,7 +8,7 @@ export interface Cetificate {
   category: CertCategory
 }
 
-export const CETIFICATES: Cetificate[] = [
+export const CERTIFICATES: Certificates[] = [
   {
     id: 1,
     name: '정보처리기사',
