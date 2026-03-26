@@ -69,7 +69,8 @@ export const AboutBody = styled.div`
 `
 
 export const AboutText = styled.div`
-  font-size: 14px;
+  padding: 5px 0;
+  font-size: 16px;
   line-height: 1.8;
   color: #374151;
 

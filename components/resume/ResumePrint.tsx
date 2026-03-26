@@ -177,7 +177,7 @@ export default function ResumePrint() {
               <EntryTitle>{exp.company}</EntryTitle>
               <EntrySub>{exp.role}</EntrySub>
               <EntryBullets>
-                {exp.tasks.map((task, i) => (
+                {exp.tasks?.map((task, i) => (
                   <EntryBulletItem key={i}>{task}</EntryBulletItem>
                 ))}
               </EntryBullets>

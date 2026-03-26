@@ -103,7 +103,7 @@ export const AboutBody = styled.div`
 `
 
 export const AboutText = styled.div`
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.8;
   color: #374151;
 

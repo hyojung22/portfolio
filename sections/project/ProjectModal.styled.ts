@@ -17,7 +17,7 @@ export const Modal = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 67%;
   min-width: 600px;
   max-height: 88%;
   overflow: hidden;

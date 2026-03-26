@@ -9,7 +9,7 @@ export default function Home() {
         style={{ transform: 'scale(1.08)', transformOrigin: 'center center' }}
       >
         <MinihompyLayout />
-        <aside>
+        <aside className="self-start">
           <MusicPlayer />
         </aside>
       </div>
