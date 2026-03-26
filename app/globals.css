@@ -62,6 +62,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media print {
+  body {
+    background-color: #fff !important;
+    background-image: none !important;
+  }
+
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    height: auto !important;
+    overflow: hidden !important;
+  }
+}
+
 .font-pixel {
   font-family: var(--font-galmuri);
   letter-spacing: -0.5px;

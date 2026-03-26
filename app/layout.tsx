@@ -3,6 +3,7 @@ import './globals.css'
 import { Noto_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
+import StyledComponentsRegistry from '@/lib/registry'
 import { cn } from '@/lib/utils'
 
 const notoSans = Noto_Sans({ subsets: ['latin'], variable: '--font-sans' })
@@ -34,7 +35,9 @@ export default function RootLayout({
         notoSans.variable,
       )}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+      </body>
     </html>
   )
 }
