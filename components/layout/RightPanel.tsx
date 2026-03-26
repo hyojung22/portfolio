@@ -22,7 +22,7 @@ export default function RightPanel() {
             fontFamily: 'var(--font-pixel)',
           }}
         >
-          반가워요 ヽ(´▽｀)/ 개발자 최효정입니다
+          ♡ 개발자 최효정입니다 ♡ 반가워요 ヽ(´▽｀)/
         </h2>
       </div>
 

@@ -11,7 +11,7 @@ interface Props {
   period: string
   image?: string
   role: string
-  tasks: readonly string[]
+  tasks?: string[]
   skills?: readonly string[]
   isLast?: boolean
 }
@@ -62,7 +62,7 @@ export default function ExperienceCard({
   )
 }
 
-function TaskList({ tasks }: { tasks: readonly string[] }) {
+function TaskList({ tasks = [] }: { tasks?: string[] }) {
   return (
     <ul className="mt-2 flex flex-col gap-1">
       {tasks.map((task, i) => (

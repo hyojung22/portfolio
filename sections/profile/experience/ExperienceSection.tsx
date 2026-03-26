@@ -35,18 +35,20 @@ export default function ExperienceSection() {
       {/* 교육 이력 */}
       <section ref={eduRef} className="mb-3">
         <Title className="mt-3 mb-3">교육이력</Title>
-        {EDUCATION.map((item, index) => (
-          <ExperienceCard
-            key={item.id}
-            no={item.id}
-            title={item.course}
-            period={item.period}
-            image={item.image}
-            role={item.school}
-            tasks={item.tasks}
-            isLast={index === EDUCATION.length - 1}
-          />
-        ))}
+        {EDUCATION.filter((edu) => edu.tasks && edu.tasks.length > 0).map(
+          (item, index, arr) => (
+            <ExperienceCard
+              key={item.id}
+              no={item.id}
+              title={item.course}
+              period={item.period}
+              image={item.image}
+              role={item.school}
+              tasks={item.tasks}
+              isLast={index === arr.length - 1}
+            />
+          ),
+        )}
       </section>
     </div>
   )

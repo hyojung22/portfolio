@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { CETIFICATES, COLORS } from '@/constants'
+import { CERTIFICATES, COLORS } from '@/constants'
 
 export default function CertificateSection() {
   return (
@@ -41,7 +41,7 @@ export default function CertificateSection() {
                 <NoticeText>성실하게 취득한 자격증들입니다. 🙂</NoticeText>
               </TableCell>
             </NoticeRow>
-            {CETIFICATES.map((cert) => (
+            {CERTIFICATES.map((cert) => (
               <TableRow key={cert.id} className="text-[14px]">
                 <TableCell className="text-center text-[12px] text-[#343434]">
                   {cert.id}

@@ -4,16 +4,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { COLORS } from '@/constants'
+import { ABOUT_ME, COLORS } from '@/constants'
 
 export default function IntroSection() {
   const name = ['최', '효', '정']
-  const lines = [
-    '사용자가 편리하게 쓸 수 있는',
-    '서비스를 만드는 것이 목표입니다.',
-    'React를 중심으로 화면을 설계하고 구현하며,',
-    '꾸준히 성장하는 중입니다.',
-  ]
+
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -65,7 +60,7 @@ export default function IntroSection() {
         입니다.
       </h3>
       <p className="text-center text-lg leading-relaxed">
-        {lines.map((line, i) => (
+        {ABOUT_ME.introLines.map((line, i) => (
           <span key={i} className="block">
             {line}
           </span>

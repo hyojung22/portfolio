@@ -18,6 +18,7 @@ export const Modal = styled.div`
   display: flex;
   flex-direction: column;
   width: 60%;
+  min-width: 600px;
   max-height: 88%;
   overflow: hidden;
   overflow-y: auto;
