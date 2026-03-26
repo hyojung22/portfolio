@@ -48,16 +48,15 @@ export const PROJECTS: Project[] = [
     startMonth: 3,
     endMonth: null,
     ongoing: true,
-    title: '싸이월드 미니홈피 스타일 개발자 포트폴리오',
+    title: '싸이월드 미니홈피 ver. 포트폴리오',
     badge: 'solo',
     award: '',
-    desc: '싸이월드 미니홈피 디자인을 기반으로 한 개발자 포트폴리오 웹사이트. 레트로 감성 UI를 재현하면서도 Next.js 기반의 현대적인 프론트엔드 구조를 적용.',
+    desc: '싸이월드 미니홈피 디자인을 기반으로 한 개발자 포트폴리오 웹사이트입니다. 레트로 감성 UI를 구현하면서도 Next.js 기반의 현대적인 프론트엔드 구조를 적용했습니다.',
     tasks: [
-      'SVG 기반 미니홈피 프레임 구현',
-      'Zustand 전역 상태관리 및 탭/서브메뉴 인터랙션 구현',
-      'framer-motion 탭 전환 애니메이션 적용',
-      'shadcn/ui Table 컴포넌트 커스터마이징',
-      '스크롤 이벤트 기반 섹션 감지 및 하이라이트 동기화 구현',
+      'Zustand와 커스텀 훅으로 스크롤이랑 메뉴 클릭을 양방향으로 동기화했습니다.',
+      'framer-motion custom variants로 방향성 있는 탭 전환 애니메이션을 구현했습니다.',
+      'Tailwind CSS와 styled-components를 함께 사용해 레이아웃과 레트로 UI 디테일을 분리해서 작업했습니다.',
+      'constants와 types를 파일별로 분리해 확장하기 쉬운 구조로 설계했습니다.',
     ],
     skills: [
       'Next.js',
@@ -86,7 +85,7 @@ export const PROJECTS: Project[] = [
       'Tailwind CSS',
     ],
     type: '개인',
-    role: '개인 프로젝트',
+    role: '프론트엔드 · UI/UX 디자인',
     platform: 'Web',
     images: [],
     githubUrl: 'https://github.com/hyojung22/portfolio',
@@ -96,17 +95,17 @@ export const PROJECTS: Project[] = [
       {
         name: 'Zustand',
         description:
-          '탭·서브메뉴 등 여러 컴포넌트에서 공유되는 전역 상태 관리에 사용했습니다.',
+          '탭이나 서브메뉴처럼 여러 컴포넌트에서 같이 쓰는 상태를 전역으로 관리했습니다.',
       },
       {
-        name: 'framer-motion AnimatePresence',
+        name: 'useRef',
         description:
-          'mode="wait"로 탭 전환 시 자연스러운 슬라이드 애니메이션을 적용했습니다.',
+          'isScrollingRef로 스크롤이랑 메뉴 클릭 이벤트가 서로 충돌하는 문제를 잡았습니다.',
       },
       {
-        name: 'createPortal',
+        name: 'constants/types 구조 설계',
         description:
-          '모달을 document.body에 직접 렌더링해 z-index 충돌을 방지했습니다.',
+          '데이터와 타입을 파일별로 분리해 수정이나 확장이 필요할 때 영향 범위를 최소화했습니다.',
       },
     ],
   },
@@ -118,15 +117,14 @@ export const PROJECTS: Project[] = [
     endMonth: 9,
     ongoing: false,
     title:
-      'iRoomClass - 멀티모달 AI 기반 학원 시험 자동 채점 및 시험 관리 플랫폼',
+      'iRoomClass: 멀티모달 AI 기반 학원 시험 자동 채점 및 시험 관리 플랫폼',
     badge: 'team',
     award: '',
-    desc: '반복적인 행정 업무에서 벗어나 학생 교육에 집중할 수 있는 시험 채점부터 성적 관리까지 자동화하는 웹 플랫폼.',
+    desc: '반복적인 행정 업무 대신 학생 교육에 집중할 수 있도록, 시험 채점부터 성적 관리까지 자동화한 웹 플랫폼입니다.',
     tasks: [
-      'Spring Boot 기반 API 흐름(Controller-Service-Repository-DTO) 설계 및 구현',
-      '학생 시험·문항·결과 조회 비즈니스 로직 및 예외처리 구현',
-      'JPA Repository 쿼리 메서드 및 Swagger 어노테이션으로 API 명세 문서화',
-      'Cursor·ChatGPT 등 AI 코드 어시스턴트를 활용한 백엔드 구현',
+      'Spring Boot 기반으로 Controller-Service-Repository-DTO 흐름에 맞게 API를 설계하고 구현했습니다.',
+      'JPA 쿼리 메서드와 Swagger 어노테이션으로 API 명세를 문서화했습니다.',
+      'Cursor·ChatGPT 등 AI 도구를 활용해 백엔드 개발 속도를 높였습니다.',
     ],
     skills: [
       'Java',
@@ -154,7 +152,7 @@ export const PROJECTS: Project[] = [
     },
     mySkills: ['Java', 'Spring Boot', 'JPA', 'Figma'],
     type: '팀 5명',
-    role: 'PM · 백엔드 담당 · UI/UX 디자인 · 산출문서',
+    role: 'PM · 백엔드 · UI/UX 디자인 · 산출문서',
     platform: 'Web',
     images: [
       { type: 'single', src: '/images/project/iroomclass/iroomclass2.png' },
@@ -197,15 +195,15 @@ export const PROJECTS: Project[] = [
     startMonth: 5,
     endMonth: 7,
     ongoing: false,
-    title: 'GlobalGo - 소상공인 AI 수출 어드바이저',
+    title: 'GlobalGo: 소상공인 AI 수출 어드바이저',
     badge: 'team',
     award: '🏆 공모전 장려상',
-    desc: '소상공인이 쉽고 간편하게 해외 이커머스 시장에 상품을 등록하고 수출할 수 있도록 돕는 웹 기반 수출 지원 플랫폼.',
+    desc: '소상공인이 해외 이커머스 시장에 쉽게 진입할 수 있도록 수출 절차를 안내하고 지원하는 웹 플랫폼입니다.',
     tasks: [
-      'React 기반 SPA 설계 및 홈페이지 구현',
-      '디렉토리 구조 체계적 설계 및 Context API를 활용한 수출 가이드 폼 전역 상태 관리',
-      'axios와 커스텀 훅을 사용하여 백엔드 REST API 연동 및 데이터 통신 로직 구현',
-      'CSS Modules와 JSX를 활용한 재사용 가능한 컴포넌트 구현',
+      'React 기반 SPA로 구조를 설계하고 홈페이지를 구현했습니다.',
+      '디렉토리 구조를 체계적으로 잡고 Context API로 수출 가이드 폼 상태를 관리했습니다.',
+      'axios와 커스텀 훅으로 백엔드 REST API 연동 로직을 구현했습니다.',
+      'CSS Modules로 재사용 가능한 컴포넌트를 만들었습니다.',
     ],
     skills: [
       'React',
@@ -232,7 +230,7 @@ export const PROJECTS: Project[] = [
     },
     mySkills: ['React', 'JavaScript', 'CSS Modules', 'Vite', 'Figma'],
     type: '팀 4명',
-    role: '프론트엔드 담당 · UI/UX 디자인 · 산출문서',
+    role: '프론트엔드 · UI/UX 디자인 · 산출문서',
     platform: 'Web',
     images: [
       { type: 'single', src: '/images/project/globalgo/globalgo1.png' },
@@ -264,15 +262,15 @@ export const PROJECTS: Project[] = [
     startMonth: 10,
     endMonth: 12,
     ongoing: false,
-    title: 'Senimo - 액티브 시니어를 위한 모임 커뮤니티 플랫폼',
+    title: 'Senimo: 액티브 시니어를 위한 모임 커뮤니티 플랫폼',
     badge: 'team',
     award: '',
-    desc: '액티브 시니어층의 사회 참여와 건강한 여가 생활을 지원하는 커뮤니티 모임 앱 플랫폼.',
+    desc: '액티브 시니어층의 사회 참여와 건강한 여가 생활을 지원하는 커뮤니티 모임 앱입니다.',
     tasks: [
-      'ConstraintLayout·RecyclerView를 활용한 다양한 레이아웃 및 리스트 화면 구성',
-      'Fragment·Navigation Component를 이용한 화면 전환 구조 체계적 설계 및 구현',
-      'Retrofit 라이브러리로 Node.js 백엔드 REST API 연동 및 데이터 통신 로직 구현',
-      '앱 리소스(아이콘·테마) 관리 및 상태에 따른 동적 UI 변경 구현',
+      'ConstraintLayout·RecyclerView로 다양한 레이아웃과 리스트 화면을 구성했습니다.',
+      'Fragment·Navigation Component로 화면 전환 구조를 설계하고 구현했습니다.',
+      'Node.js 백엔드 REST API를 연동해 데이터 통신 로직을 구현했습니다.',
+      '앱 리소스(아이콘·테마)를 관리하고 상태에 따라 UI가 바뀌도록 구현했습니다.',
     ],
     skills: [
       'Kotlin',
@@ -290,9 +288,9 @@ export const PROJECTS: Project[] = [
       Database: ['MySQL'],
       Design: ['Figma'],
     },
-    mySkills: ['Kotlin', 'Figma'],
+    mySkills: ['Kotlin', 'Retrofit', 'Figma'],
     type: '팀 5명',
-    role: '프론트엔드 담당 · UI/UX 디자인',
+    role: '프론트엔드 · UI/UX 디자인',
     platform: 'App',
     images: [
       {
@@ -321,17 +319,17 @@ export const PROJECTS: Project[] = [
       {
         name: 'Retrofit',
         description:
-          'REST API 통신을 인터페이스 기반으로 정의해 타입 안전하게 서버와 데이터를 주고받았습니다.',
+          'REST API 통신을 인터페이스로 정의해 서버와 데이터를 주고받았습니다.',
       },
       {
         name: 'RecyclerView',
         description:
-          'ViewHolder 패턴으로 모임 목록을 효율적으로 렌더링하고 스크롤 성능을 최적화했습니다.',
+          'ViewHolder 패턴으로 모임 목록을 효율적으로 렌더링하고 스크롤 성능을 개선했습니다.',
       },
       {
         name: 'Navigation Component',
         description:
-          'NavGraph로 Fragment 전환을 관리해 화면 흐름을 일관성 있게 구성했습니다.',
+          'NavGraph로 Fragment 전환을 관리해 화면 흐름을 일관되게 유지했습니다.',
       },
     ],
   },
@@ -345,11 +343,11 @@ export const PROJECTS: Project[] = [
     title: 'JJapJi - 텍스트 마이닝 기반 웹 매거진 서비스',
     badge: 'team',
     award: '',
-    desc: '20~30대의 관심사를 중심으로 뉴스 기사, 관광 정보, 패션 트렌드 등 다양한 정보를 제공하는 웹 매거진 서비스.',
+    desc: '20~30대의 관심사를 중심으로 뉴스 기사, 관광 정보, 패션 트렌드 등 다양한 정보를 제공하는 웹 매거진 서비스입니다.',
     tasks: [
-      'useEffect·useState 훅을 활용한 백엔드 API 비동기 데이터 처리 및 맵 상태 관리',
-      'react-kakao-maps-sdk·MarkerClusterer를 활용한 전국 축제 지도 구현',
-      'CustomOverlayMap으로 마커 클릭 시 상세 정보 표시 및 외부 링크 연결 구현',
+      'useEffect·useState로 백엔드 API 데이터를 비동기로 불러오고 지도 상태를 관리했습니다.',
+      'react-kakao-maps-sdk와 MarkerClusterer로 전국 축제 지도를 구현했습니다.',
+      'CustomOverlayMap으로 마커 클릭 시 상세 정보와 외부 링크를 말풍선으로 표시했습니다.',
     ],
     skills: [
       'React',
@@ -370,7 +368,7 @@ export const PROJECTS: Project[] = [
     },
     mySkills: ['React', 'KakaoMap Maps API', 'Illustrator'],
     type: '팀 5명',
-    role: '프론트엔드 담당 · UI/UX 디자인',
+    role: '프론트엔드 · UI/UX 디자인',
     platform: 'Web',
     images: [
       {
