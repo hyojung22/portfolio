@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: '최효정 포트폴리오',
     description:
       '사용자 경험을 먼저 생각하는 개발자 최효정의 포트폴리오입니다.',
-    images: ['/images/og-image.png'],
+    images: ['https://minihompy-portfolio.vercel.app/images/og-image.png'],
   },
 }
 
