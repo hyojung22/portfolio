@@ -7,7 +7,6 @@ export const COLORS = {
   tabActive: '#FFFFFF',
   tabTextActive: '#000000',
   rightPanelTitle: '#486389',
-  // panelSubTitle: '#2290B2',
   panelSubTitle: '#3FB1D7',
   panelBg: '#EBEBE9',
   selectBg: '#9DE0F5',

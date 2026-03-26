@@ -28,7 +28,7 @@ export const ABOUT_ME: AboutMe = {
   ],
 
   contact: {
-    email: 'pushj22@naver.com',
+    email: '95choihyojung@gmail.com',
     phone: '010-8441-7214',
     birth: '1995.07.21',
     location: '광주 북구 운암동',
