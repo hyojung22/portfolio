@@ -14,16 +14,17 @@
 
 ## 🖥️ 프로젝트 소개
 
-2000년대 감성의 **싸이월드 미니홈피** 디자인을 현대적인 기술로 재해석한 개발자 포트폴리오입니다.
+2000년대 감성의 **싸이월드 미니홈피** 디자인을 현대 기술로 재해석한 개발자 포트폴리오입니다.
 
-레트로 UI의 감성은 그대로 살리면서, Next.js App Router 기반의 구조적인 아키텍처를 적용하여 개발하였습니다.  
-단순한 자기소개 페이지가 아니라, 미니홈피 인터페이스 자체를 구현하는 것을 목표로 합니다.
+레트로 UI 감성은 그대로 살리면서, Next.js App Router 기반의 구조적인 아키텍처를 적용했습니다.
+단순한 자기소개 페이지가 아니라 미니홈피 인터페이스 자체를 구현하는 것을 목표로 합니다.
 
 ### ✨ 주요 콘텐츠
 
-- 🧑‍💻 **프로필** — 자기소개 및 경력 소개
+- 🧑‍💻 **프로필** — 자기소개, 업무경험, 교육이력
 - 🛠️ **기술 스택** — 사용 가능한 기술 시각화
 - 📂 **프로젝트** — 주요 개발 프로젝트 목록
+- 📄 **이력서** — 웹 이력서 및 PDF 저장 기능
 
 ---
 
@@ -68,42 +69,47 @@ const MinihomeBox = styled.div`
 ├── app/                      # Next.js App Router 페이지 & 레이아웃
 │   ├── layout.tsx
 │   ├── page.tsx
-│   └── globals.css
+│   ├── globals.css
+│   └── resume/               # 이력서 페이지
+│       ├── page.tsx
+│       ├── loading.tsx
+│       └── print/
+│           └── page.tsx      # 인쇄용 페이지 (PDF 저장)
 │
 ├── components/               # 재사용 가능한 UI 컴포넌트
 │   ├── common/               # 공통 UI (Button, Avatar, Card, Badge)
-│   └── layout/               # 레이아웃 (Header, Sidebar, MainLayout)
+│   ├── layout/               # 레이아웃 (Header, Sidebar, MainLayout)
+│   ├── resume/               # 이력서 컴포넌트
+│   │   ├── Resume.tsx
+│   │   ├── Resume.styled.ts
+│   │   ├── ResumePrint.tsx
+│   │   └── ResumePrint.styled.ts
+│   └── ui/                   # shadcn UI 컴포넌트
 │
 ├── sections/                 # 페이지를 구성하는 콘텐츠 영역
 │   ├── profile/
-│   ├── projects/
-│   ├── guestbook/
-│   └── diary/
+│   └── projects/
 │
 ├── constants/                # 하드코딩 데이터 분리 관리
+│   ├── index.ts              # export 통합
+│   ├── awards.ts
+│   ├── certificates.ts
+│   ├── colors.ts
+│   ├── experience.ts
+│   ├── intro.ts
 │   ├── menu.ts
-│   ├── skills.ts
-│   └── profile.ts
+│   ├── projects.ts
+│   └── skills.ts
 │
 ├── store/                    # Zustand 전역 상태 관리
-│   ├── useTabStore.ts
-│   ├── useVisitorStore.ts
-│   └── useMinihomeStore.ts
-│
-├── tabs/                     # 미니홈피 탭 메뉴 구조
-│   ├── homeTab.ts
-│   ├── profileTab.ts
-│   └── guestbookTab.ts
 │
 ├── types/                    # TypeScript 타입 정의
-│   ├── profile.ts
-│   ├── project.ts
-│   └── guestbook.ts
 │
-└── hooks/                    # 재사용 가능한 커스텀 훅
-    ├── useScroll.ts
-    ├── useLocalStorage.ts
-    └── useVisitorCount.ts
+├── hooks/                    # 재사용 가능한 커스텀 훅
+│
+└── lib/                      # 유틸리티
+    ├── registry.tsx          # StyledComponentsRegistry
+    └── utils.ts
 ```
 
 ### 폴더 책임 원칙
@@ -116,8 +122,20 @@ const MinihomeBox = styled.div`
 | `hooks`      | UI 로직 분리          |
 | `constants`  | 데이터 관리           |
 | `types`      | 타입 정의             |
+| `lib`        | 유틸리티 함수         |
 
 > 각 폴더는 **한 가지 역할**만 담당합니다. 프로젝트가 커져도 구조가 무너지지 않는 것을 목표로 합니다.
+
+---
+
+## 📄 이력서 페이지
+
+`/resume` 경로에서 웹 이력서를 확인할 수 있습니다.
+
+- **화면용** (`/resume`) — 탭 방식으로 프로젝트 전환, 툴팁 포함 아이콘 버튼
+- **인쇄용** (`/resume/print`) — 모든 프로젝트 나열, PDF 저장에 최적화된 레이아웃
+
+PDF 저장 버튼 클릭 시 `/resume/print` 페이지가 새 탭으로 열리며 인쇄 다이얼로그가 자동으로 실행됩니다.
 
 ---
 
@@ -139,21 +157,18 @@ cd minihompy-portfolio
 
 ```bash
 npm install
-# 또는
-yarn install
 ```
 
 ### 3. 개발 서버 실행
 
 ```bash
 npm run dev
-# 또는
-yarn dev
 ```
 
 ### 4. 접속 확인
 
 - **포트폴리오**: http://localhost:3000
+- **이력서**: http://localhost:3000/resume
 
 ---
 
