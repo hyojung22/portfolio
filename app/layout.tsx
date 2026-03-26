@@ -1,5 +1,6 @@
 import './globals.css'
 
+import { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
@@ -19,6 +20,17 @@ const galmuri = localFont({
   display: 'swap',
   variable: '--font-galmuri',
 })
+
+export const metadata: Metadata = {
+  title: '최효정 포트폴리오',
+  description: '사용자 경험을 먼저 생각하는 개발자 최효정의 포트폴리오입니다.',
+  openGraph: {
+    title: '최효정 포트폴리오',
+    description:
+      '사용자 경험을 먼저 생각하는 개발자 최효정의 포트폴리오입니다.',
+    images: ['/images/profile/profile2.png'],
+  },
+}
 
 export default function RootLayout({
   children,
