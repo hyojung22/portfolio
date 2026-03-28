@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-right: 150px;
+  padding-right: 220px;
   background: rgba(0, 0, 0, 0.8);
 `
 

@@ -6,13 +6,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen items-center">
       {/* 데스크탑 - 기존 유지 */}
-      <div
-        className="mx-auto hidden items-center gap-10 md:flex"
-        style={{
-          transform: 'scale(var(--scale-value))',
-          transformOrigin: 'center center',
-        }}
-      >
+      <div className="mx-auto hidden items-center gap-4 md:flex">
         <MinihompyLayout />
         <aside className="self-start">
           <MusicPlayer />
