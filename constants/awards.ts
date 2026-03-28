@@ -11,7 +11,7 @@ export const AWARD: Award[] = [
   {
     id: 1,
     image: '',
-    title: '관세청 공공데이터 활용 경진대회 - 장려상',
+    title: '공공데이터 활용 경진대회',
     period: '2025.07',
     issuer: '관세청',
     contents: [

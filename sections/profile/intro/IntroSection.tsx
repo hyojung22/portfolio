@@ -86,7 +86,7 @@ const Twinkle = styled.div<{ $delay: string }>`
   animation-delay: ${({ $delay }) => $delay};
 `
 
-function PixelStar({
+export function PixelStar({
   size = 16,
   color = '#ff9ebc',
   delay = '0s',
