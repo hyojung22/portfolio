@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
     platform: 'Web',
     images: [],
     githubUrl: 'https://github.com/hyojung22/portfolio',
-    deployUrl: '',
+    deployUrl: 'https://minihompy-portfolio.vercel.app/',
     readmeUrl: '',
     skillKeywords: [
       {

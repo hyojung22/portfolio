@@ -1,6 +1,6 @@
 import './globals.css'
 
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { Noto_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
@@ -30,6 +30,11 @@ export const metadata: Metadata = {
       '사용자 경험을 먼저 생각하는 개발자 최효정의 포트폴리오입니다.',
     images: ['https://minihompy-portfolio.vercel.app/images/og-image.png'],
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({

@@ -1,28 +1,15 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import styled from 'styled-components'
 
 import { ABOUT_ME, COLORS, PROFILE_LINKS } from '@/constants'
+import { useProfileLink } from '@/hooks/useProfileLink'
 
 export default function LeftHomeTab() {
-  const router = useRouter()
-
-  const handleLinkChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value
-    if (!value) return
-
-    if (value.startsWith('http')) {
-      window.open(value, '_blank')
-    } else {
-      router.push(value)
-    }
-
-    e.target.value = ''
-  }
+  const { handleLinkChange } = useProfileLink()
 
   return (
     <div className="flex h-full flex-col items-center justify-between gap-2 rounded-md bg-white p-3">
@@ -47,22 +34,7 @@ export default function LeftHomeTab() {
           border: '1.3px solid #ccc',
         }}
       >
-        <span
-          className="font-bold"
-          style={{
-            color: COLORS.panelSubTitle,
-            fontFamily: 'var(--font-pixel)',
-            letterSpacing: 1.5,
-            fontSize: '9.5px',
-            transform: 'scaleY(0.8)', // 0.7 = 세로 70%로 압축
-            transformOrigin: 'left center',
-            display: 'inline-block',
-          }}
-        >
-          TODAY IS..
-        </span>
-        <span className="text-[10px]">🩷</span>
-        <span className="text-[13px] font-medium">설레임</span>
+        <TodayIs />
       </div>
 
       <address className="w-full flex-3 not-italic">
@@ -86,13 +58,21 @@ export default function LeftHomeTab() {
           >
             {ABOUT_ME.name}
           </span>
-          <GenderSvg className="shrink-0" />
-          <span className="text-xs font-bold" style={{ color: COLORS.gray500 }}>
-            {ABOUT_ME.contact.birth}
-          </span>
-          <span className="text-xs font-bold" style={{ color: COLORS.orange }}>
-            (+)
-          </span>
+          <div className="flex items-center gap-1">
+            <GenderSvg className="shrink-0" />
+            <span
+              className="text-xs font-bold"
+              style={{ color: COLORS.gray500 }}
+            >
+              {ABOUT_ME.contact.birth}
+            </span>
+            <span
+              className="text-xs font-bold"
+              style={{ color: COLORS.orange }}
+            >
+              (+)
+            </span>
+          </div>
         </div>
 
         <p
@@ -117,6 +97,34 @@ export default function LeftHomeTab() {
   )
 }
 
+export function TodayIs({ fontSize }: { fontSize?: string }) {
+  return (
+    <>
+      <span
+        className="text-[9.5px]"
+        style={{
+          fontWeight: 'bold',
+          color: COLORS.panelSubTitle,
+          fontFamily: 'var(--font-pixel)',
+          letterSpacing: 1.5,
+          fontSize: fontSize,
+          transform: 'scaleY(0.8)', // 0.7 = 세로 70%로 압축
+          transformOrigin: 'left center',
+          display: 'inline-block',
+        }}
+      >
+        TODAY IS..
+      </span>
+      <span className="text-[10px]" style={{ fontSize: fontSize }}>
+        🩷
+      </span>
+      <span className="text-[13px] font-medium" style={{ fontSize: fontSize }}>
+        설레임
+      </span>
+    </>
+  )
+}
+
 const DashedDivider = styled.hr`
   width: 100%;
   margin: 0;
@@ -134,7 +142,7 @@ const LinkSelect = styled.select`
   border: 1px solid ${COLORS.border};
 `
 
-function GenderSvg({ className }: { className?: string }) {
+export function GenderSvg({ className }: { className?: string }) {
   return (
     <svg
       className={className}
