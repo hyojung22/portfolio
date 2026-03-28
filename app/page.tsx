@@ -4,7 +4,7 @@ import MinihompyLayout from '@/layout/MinihompyLayout'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center overflow-x-auto">
+    <main className="flex min-h-screen items-center">
       {/* 데스크탑 - 기존 유지 */}
       <div
         className="mx-auto hidden items-center gap-10 md:flex"

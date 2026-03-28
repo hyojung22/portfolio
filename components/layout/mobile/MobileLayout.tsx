@@ -15,7 +15,7 @@ export default function MobileLayout() {
     <div className="relative flex min-h-screen flex-col">
       {/* 상단 헤더 */}
       <MobileHeader />
-      <div className="px-4">
+      <div className="w-full px-4 md:px-0">
         {/* 콘텐츠 */}
         <main className="flex-1 overflow-y-auto rounded-lg pb-21">
           {/* 홈 / 프로필 / 프로젝트 */}

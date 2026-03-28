@@ -8,7 +8,7 @@ export default function MobileHeader() {
       style={{ backgroundColor: `${COLORS.panelSubTitle}` }}
       className="flex h-25 w-full justify-center overflow-hidden pt-3"
     >
-      <div className="relative h-full w-[320px]">
+      <div className="relative h-full w-full">
         <Image
           src="/images/home/mobile-profile.png"
           alt="모바일 프로필"

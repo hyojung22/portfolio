@@ -53,8 +53,13 @@ function LiveClock() {
     return () => clearInterval(timer)
   }, [])
 
-  const date = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`
-  const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`
+  // 한국 시간으로 변환
+  const koreaTime = new Date(
+    now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }),
+  )
+
+  const date = `${koreaTime.getFullYear()}.${String(koreaTime.getMonth() + 1).padStart(2, '0')}.${String(koreaTime.getDate()).padStart(2, '0')}`
+  const time = `${String(koreaTime.getHours()).padStart(2, '0')}:${String(koreaTime.getMinutes()).padStart(2, '0')}:${String(koreaTime.getSeconds()).padStart(2, '0')}`
 
   return (
     <div

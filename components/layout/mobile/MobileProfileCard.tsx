@@ -4,12 +4,9 @@ import Image from 'next/image'
 import styled from 'styled-components'
 
 import { ABOUT_ME, COLORS, PROFILE_LINKS } from '@/constants'
-import { useProfileLink } from '@/hooks/useProfileLink'
 import { GenderSvg, TodayIs } from '@/tabs/LeftHomeTab'
 
 export default function MobileProfileCard() {
-  const { handleLinkChange } = useProfileLink()
-
   return (
     <>
       <Card className="flex flex-col gap-3">
@@ -171,7 +168,6 @@ const DottedDivider = styled.div`
 
 const LinkBtn = styled.a`
   font-family: var(--font-galmuri);
-  /* font-size: 16px; */
   font-size: clamp(13px, 3.5vw, 16px);
   color: ${COLORS.orange};
   cursor: pointer;
