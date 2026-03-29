@@ -49,7 +49,6 @@ export const SKILLS: SkillCategory[] = [
       { name: 'Spring Boot', level: '사용 가능' },
       { name: 'Node.js', level: '사용 가능' },
       { name: 'MySQL', level: '사용 가능' },
-      { name: 'Oracle', level: '사용 가능' },
     ],
   },
   {
@@ -60,7 +59,7 @@ export const SKILLS: SkillCategory[] = [
       { name: 'Figma', level: '주로 사용' },
       { name: 'Photoshop', level: '사용 가능' },
       { name: 'Illustrator', level: '사용 가능' },
-      { name: 'Vercel', level: '추가 예정' },
+      { name: 'Vercel', level: '사용 가능' },
     ],
   },
 ]

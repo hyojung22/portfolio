@@ -1,5 +1,7 @@
 'use client'
 
+import dynamic from 'next/dynamic'
+
 import { useTabStore } from '@/store/useTabStore'
 import MobileHomeTab from '@/tabs/mobile/MobileHomeTab'
 import MobileProfileTab from '@/tabs/mobile/MobileProfileTab'
@@ -7,6 +9,12 @@ import MobileProjectTab from '@/tabs/mobile/MobileProjectTab'
 
 import BottomNav from './BottomNav'
 import MobileHeader from './MobileHeader'
+
+// SSR 끄고 클라이언트에서만 렌더링
+const MobileMusicPlayer = dynamic(
+  () => import('@/components/common/MobileMusicPlayer'),
+  { ssr: false },
+)
 
 export default function MobileLayout() {
   const { activeTab } = useTabStore()
@@ -23,8 +31,11 @@ export default function MobileLayout() {
           {activeTab === '프로필' && <MobileProfileTab />}
           {activeTab === '프로젝트' && <MobileProjectTab />}
         </main>
-        {/* 하단 탭바 */}
       </div>
+
+      {/* 뮤직플레이어 */}
+      <MobileMusicPlayer />
+      {/* 하단 탭바 */}
       <BottomNav />
     </div>
   )
