@@ -97,7 +97,6 @@ export const ProjBadge = styled.span`
   font-weight: 700;
   color: #e07800;
   background: #fff3e0;
-  border: 1px solid #ffe0b2;
   border-radius: 2px;
 `
 export const DiaryEntry = styled.div<{ $hasProj: boolean }>`
@@ -159,10 +158,9 @@ export const Badge = styled.span<{ $badge: 'team' | 'solo' }>`
   margin-right: 5px;
   font-size: 11px;
   font-weight: 700;
-  color: ${({ $badge }) => ($badge === 'team' ? '#2a8aaa' : '#e07800')};
-  background: ${({ $badge }) => ($badge === 'team' ? '#e0f4f9' : '#fff3e0')};
-  border: 1px solid
-    ${({ $badge }) => ($badge === 'team' ? '#b8dff0' : '#ffe0b2')};
+  color: ${({ $badge }) => ($badge === 'team' ? '#0e7490' : '#7c3aed')};
+  background: ${({ $badge }) => ($badge === 'team' ? '#e0f5fb' : '#ede9fe')};
+
   border-radius: 2px;
 `
 export const AwardTag = styled.span`

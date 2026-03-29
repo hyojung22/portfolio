@@ -1,9 +1,8 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
 
-import { Project, PROJECTS } from '@/constants'
+import { getDateLabel, useProjectFilter } from '@/hooks/useProjectFilter'
 import { useTabStore } from '@/store/useTabStore'
 
 import ProjectModal from './ProjectModal'
@@ -32,60 +31,19 @@ import {
   YearTopRow,
 } from './ProjectSection.styled'
 
-const today = new Date()
-const curY = today.getFullYear()
-const curM = today.getMonth() + 1
-
-function getEndMonth(p: Project) {
-  if (!p.ongoing) return p.endMonth as number
-  return p.year === curY ? curM : 12
-}
-
-function getDateLabel(p: Project) {
-  const s = `${p.year}.${String(p.startMonth).padStart(2, '0')}`
-  const e = p.ongoing
-    ? '진행중'
-    : `${p.year}.${String(getEndMonth(p)).padStart(2, '0')}`
-  return `${s} ~ ${e}`
-}
-
 export default function ProjectSection() {
   const { activeProjectMenu } = useTabStore()
-
-  const allYears = PROJECTS.map((p) => p.year)
-  const minYear = Math.min(...allYears)
-  const maxYear = Math.max(...allYears)
-  const years = Array.from(
-    { length: maxYear - minYear + 1 },
-    (_, i) => minYear + i,
-  )
-  const [curIdx, setCurIdx] = useState(years.length - 1)
-  const [direction, setDirection] = useState(0)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-
-  const curYear = years[curIdx]
-
-  const changeYear = (nextId: number) => {
-    setDirection(nextId > curIdx ? 1 : -1)
-    setCurIdx(nextId)
-  }
-
-  const filtered = PROJECTS.filter((p) => {
-    if (activeProjectMenu === 'team')
-      return p.badge === 'team' && p.year === curYear
-    if (activeProjectMenu === 'solo')
-      return p.badge === 'solo' && p.year === curYear
-    return p.year === curYear
-  })
-
-  const activeMonths = new Set<number>()
-  filtered.forEach((p) => {
-    for (let m = p.startMonth; m <= getEndMonth(p); m++) activeMonths.add(m)
-  })
-  const monthStr = [...activeMonths]
-    .sort((a, b) => a - b)
-    .map((m) => `${m}월`)
-    .join(' · ')
+  const {
+    years,
+    curIdx,
+    curYear,
+    direction,
+    selectedProject,
+    setSelectedProject,
+    changeYear,
+    filtered,
+    monthStr,
+  } = useProjectFilter(activeProjectMenu)
 
   return (
     <div className="flex h-full flex-col gap-3 overflow-y-auto p-3 pr-0">

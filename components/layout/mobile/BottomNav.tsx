@@ -58,7 +58,11 @@ const NavItem = styled.button<{ $isActive: boolean }>`
   padding: 10px 0;
   font-weight: ${({ $isActive }) => ($isActive ? 700 : 400)};
   color: ${({ $isActive }) => ($isActive ? COLORS.orange : COLORS.gray500)};
-  cursor: pointer;
+  cursor: pointer !important;
   background: none;
   border: none;
+
+  * {
+    cursor: pointer !important;
+  }
 `

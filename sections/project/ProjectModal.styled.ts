@@ -6,25 +6,41 @@ export const Overlay = styled.div`
   position: fixed;
   inset: 0;
   z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 220px;
   background: rgba(0, 0, 0, 0.8);
+`
+
+export const ModalWrapper = styled.div`
+  position: fixed;
+  top: 50%;
+  left: clamp(465px, calc(50% - 92px), 600px);
+  z-index: 101;
+  transform: translate(-52.5%, -50%);
+
+  @media (max-width: 767px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `
 
 export const Modal = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 67%;
+  width: 800px;
   min-width: 600px;
-  max-height: 88%;
+  max-height: 88vh;
   overflow: hidden;
   overflow-y: auto;
   background: #fff;
   border: 2px solid ${COLORS.panelSubTitle};
   border-radius: 10px;
+
+  @media (max-width: 767px) {
+    width: 90vw;
+    min-width: unset;
+    max-height: 80vh;
+  }
 `
 
 export const CloseBtn = styled.span`
@@ -64,6 +80,10 @@ export const ModalDate = styled.div`
   font-weight: 900;
   color: ${COLORS.panelSubTitle};
   letter-spacing: 2px;
+
+  @media (max-width: 767px) {
+    font-size: 20px;
+  }
 `
 
 export const ModalMeta = styled.div`
@@ -73,6 +93,10 @@ export const ModalMeta = styled.div`
   justify-content: center;
   font-size: 18px;
   color: #585858;
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
 `
 
 export const Carousel = styled.div`
@@ -80,6 +104,10 @@ export const Carousel = styled.div`
   flex-shrink: 0;
   height: 290px;
   overflow: hidden;
+
+  @media (max-width: 767px) {
+    height: 200px;
+  }
 `
 
 export const CarouselSlide = styled.div<{ $active: boolean }>`
@@ -94,13 +122,10 @@ export const CarouselSlide = styled.div<{ $active: boolean }>`
   background: #eee;
   border: 1px solid #e0e0e0;
 
-  /* img {
-    width: 100%;
-    height: 85%;
-    object-fit: contain;
-    object-position: '';
-    border-radius: 10px;
-  } */
+  @media (max-width: 767px) {
+    padding: 20px;
+    margin: 0;
+  }
 `
 
 export const CarouselBtn = styled.button<{ $pos: 'left' | 'right' }>`
@@ -116,7 +141,7 @@ export const CarouselBtn = styled.button<{ $pos: 'left' | 'right' }>`
   border-radius: 20%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   transform: translateY(-50%);
-  ${({ $pos }) => ($pos === 'left' ? 'left: 30px' : 'right: 50px')}
+  ${({ $pos }) => ($pos === 'left' ? 'left: 10px' : 'right: 20px')}
 `
 
 export const CarouselDots = styled.div`
@@ -141,6 +166,11 @@ export const ModalBody = styled.div`
   flex: 1;
   margin: 0 0 0 20px;
   /* overflow-y: auto; */
+
+  @media (max-width: 767px) {
+    padding: 0;
+    margin: 0;
+  }
 `
 
 export const ModalContent = styled.div`
@@ -153,6 +183,10 @@ export const ModalTitle = styled.div`
   font-weight: 700;
   line-height: 1.4;
   color: #222;
+
+  @media (max-width: 767px) {
+    font-size: 22px;
+  }
 `
 
 export const LinkRow = styled.div`
