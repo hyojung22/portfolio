@@ -261,15 +261,22 @@ const MobileEntryContent = styled(EntryContent)``
 
 const MobileSkillRow = styled(SkillRow)`
   flex-direction: column;
+  padding-left: 0;
+
+  @media (max-width: 767px) {
+    padding-left: 0;
+    margin-left: 0;
+  }
 `
 
 const MobileSkillLabel = styled(SkillLabel)`
   min-width: 70px;
+  padding-left: 10px;
   font-size: 20px;
 `
 const MobileChipGroup = styled(ChipGroup)`
   gap: 5px;
-  margin-top: -70px;
+  padding-left: 10px;
 `
 
 const MobileChip = styled(Chip)`

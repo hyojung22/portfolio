@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --breakpoint-desktop: 720px;
+}
+
 :root {
   /* 배경 */
   --bg-primary: #777777;
@@ -65,7 +69,7 @@ body {
   background-color: #f6f6f6;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 720px) {
   body {
     background-color: #767676;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='0' x2='20' y2='20' stroke='%238B8B8B' stroke-width='3' stroke-dasharray='10 3'/%3E%3Cline x1='0' y1='20' x2='20' y2='20' stroke='%238B8B8B' stroke-width='3' stroke-dasharray='10 3'/%3E%3C/svg%3E");

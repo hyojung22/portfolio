@@ -84,7 +84,7 @@ export default function LeftProfileTab() {
                         {menu.subMenu.map((sub) => (
                           <li key={sub.id}>
                             <span
-                              className="cursor-pointer! text-sm hover:bg-yellow-200"
+                              className="cursor-pointer! text-sm"
                               style={{
                                 marginLeft: '23px',
                                 color:
@@ -127,10 +127,6 @@ const CategoryRow = styled.div`
 
   * {
     cursor: pointer !important;
-  }
-
-  &:hover {
-    opacity: 0.7;
   }
 `
 

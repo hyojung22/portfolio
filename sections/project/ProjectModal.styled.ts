@@ -21,6 +21,12 @@ export const ModalWrapper = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  @media (min-width: 720px) and (max-width: 1100px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `
 
 export const Modal = styled.div`
@@ -40,6 +46,11 @@ export const Modal = styled.div`
     width: 90vw;
     min-width: unset;
     max-height: 80vh;
+  }
+
+  @media (min-width: 720px) and (max-width: 1100px) {
+    width: 85vw;
+    min-width: unset;
   }
 `
 

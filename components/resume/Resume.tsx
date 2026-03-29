@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaGithubSquare } from 'react-icons/fa'
 import { FaSquareGithub } from 'react-icons/fa6'
 import {
@@ -53,6 +53,8 @@ import {
   HeaderTagline,
   HeaderTop,
   IconBtn,
+  MobilePeriod,
+  MobileProjTypeRow,
   ProjDesc,
   ProjHeader,
   ProjIconLink,
@@ -78,13 +80,22 @@ import {
   SkillLabel,
   SkillLegend,
   SkillRow,
+  SpecEntry,
 } from './Resume.styled'
 
 export default function Resume() {
   const projIds = PROJECTS.map((p) => p.id)
   const [activeTab, setActiveTab] = useState(projIds[0])
+  const [isMobile, setIsMobile] = useState(false)
 
   const activeProject = PROJECTS.find((p) => p.id === activeTab)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   return (
     <ResumeWrapper>
@@ -102,7 +113,7 @@ export default function Resume() {
                   <TooltipTrigger asChild>
                     <IconBtn href="/" title="포트폴리오">
                       <TbSmartHome
-                        size={70}
+                        size={isMobile ? 40 : 70}
                         strokeWidth={1.5}
                         color="#3FB1D7"
                       />
@@ -122,7 +133,7 @@ export default function Resume() {
                       target="_blank"
                       title="GitHub"
                     >
-                      <FaSquareGithub size={60} />
+                      <FaSquareGithub size={isMobile ? 35 : 60} />
                     </IconBtn>
                   </TooltipTrigger>
                   <TooltipContent className="rounded-sm">GitHub</TooltipContent>
@@ -133,8 +144,9 @@ export default function Resume() {
                       as="button"
                       onClick={() => window.open('/resume/print', '_blank')}
                       title="PDF 다운로드"
+                      style={{ display: isMobile ? 'none' : 'flex' }}
                     >
-                      <FiDownload size={55} />
+                      <FiDownload size={isMobile ? 33 : 55} />
                     </IconBtn>
                   </TooltipTrigger>
                   <TooltipContent className="rounded-sm">
@@ -180,13 +192,13 @@ export default function Resume() {
         <SectionDivider />
         <SectionTitle>Spec</SectionTitle>
         {CERTIFICATES.map((cert) => (
-          <Entry key={cert.id}>
+          <SpecEntry key={cert.id}>
             <EntryDate>{cert.date.replace('.', '. ')}</EntryDate>
             <EntryContent>
               <EntryTitle>{cert.name}</EntryTitle>
               <EntrySub>{cert.issuer}</EntrySub>
             </EntryContent>
-          </Entry>
+          </SpecEntry>
         ))}
       </Section>
 
@@ -334,12 +346,37 @@ export default function Resume() {
               </ProjTitleLinks>
             </ProjHeader>
 
-            <ProjType>
-              {activeProject.badge === 'team'
-                ? `팀 프로젝트 (${activeProject.type})`
-                : '개인 프로젝트'}
-              {activeProject.award && ` · ${activeProject.award}`}
-            </ProjType>
+            {/* 모바일에서만 보이는 날짜 */}
+            <MobilePeriod>
+              {activeProject.year}.
+              {String(activeProject.startMonth).padStart(2, '0')}
+              {' ~ '}
+              {activeProject.ongoing
+                ? ''
+                : `${activeProject.year}.${String(activeProject.endMonth).padStart(2, '0')}`}
+            </MobilePeriod>
+
+            {/* 팀/개인 + 아이콘 */}
+            <MobileProjTypeRow>
+              <ProjType>
+                {activeProject.badge === 'team'
+                  ? `팀 프로젝트 (${activeProject.type})`
+                  : '개인 프로젝트'}
+                {activeProject.award && ` · ${activeProject.award}`}
+              </ProjType>
+              <div className="mobile-icons">
+                {activeProject.deployUrl && (
+                  <ProjIconLink href={activeProject.deployUrl} target="_blank">
+                    <FiExternalLink size={16} />
+                  </ProjIconLink>
+                )}
+                {activeProject.githubUrl && (
+                  <ProjIconLink href={activeProject.githubUrl} target="_blank">
+                    <FaGithubSquare size={16} />
+                  </ProjIconLink>
+                )}
+              </div>
+            </MobileProjTypeRow>
 
             <ProjDesc>{activeProject.desc}</ProjDesc>
 
