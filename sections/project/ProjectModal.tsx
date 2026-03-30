@@ -150,7 +150,9 @@ export default function ProjectModal({ project: p, onClose }: Props) {
                                   ? slide.images.length === 2
                                     ? '52%'
                                     : '35%'
-                                  : '20%',
+                                  : slide.images.length === 3
+                                    ? '19%'
+                                    : '20%',
                               height: 'auto',
                             }}
                           />

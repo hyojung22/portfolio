@@ -35,6 +35,8 @@ import {
 
 export default function MusicPlayer() {
   const playerRef = useRef<YouTubePlayer>(null)
+  const isReadyRef = useRef(false)
+
   const {
     currentIndex,
     isPlaying,
@@ -50,24 +52,39 @@ export default function MusicPlayer() {
 
   const currentTrack = PLAYLIST[currentIndex]
 
+  // currentIndex 변경 시 ready 초기화
+  useEffect(() => {
+    isReadyRef.current = false
+    playerRef.current = null
+  }, [currentIndex])
+
   // 재생 상태 변경 시 플레이어 제어
   useEffect(() => {
-    if (!playerRef.current) return
-    if (isPlaying) {
-      playerRef.current.playVideo()
-    } else {
-      playerRef.current.pauseVideo()
+    if (!playerRef.current || !isReadyRef.current) return
+    try {
+      if (isPlaying) {
+        playerRef.current.playVideo()
+      } else {
+        playerRef.current.pauseVideo()
+      }
+    } catch (e) {
+      // 플레이어가 DOM에서 분리된 경우 무시
     }
   }, [isPlaying])
 
   // 볼륨 변경 시 플레이어 제어
   useEffect(() => {
-    if (!playerRef.current) return
-    playerRef.current.setVolume(volume)
+    if (!playerRef.current || !isReadyRef.current) return
+    try {
+      playerRef.current.setVolume(volume)
+    } catch (e) {
+      // 플레이어가 DOM에서 분리된 경우 무시
+    }
   }, [volume])
 
   const onReady = (e: YouTubeEvent) => {
     playerRef.current = e.target
+    isReadyRef.current = true
     e.target.setVolume(volume)
     if (isPlaying) {
       e.target.playVideo()

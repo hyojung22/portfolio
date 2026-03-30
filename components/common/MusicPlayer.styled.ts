@@ -3,11 +3,16 @@ import styled from 'styled-components'
 export const Wrapper = styled.div<{ $listOpen: boolean }>`
   width: 205px;
   padding: 0 5px ${({ $listOpen }) => ($listOpen ? '5px' : '0')};
+  margin-left: 10px;
   font-size: 11px;
   user-select: none;
   background: #d0d0d0;
   border: 1px solid #999;
   border-radius: 6px;
+
+  @media (max-width: 720px) {
+    display: none;
+  }
 `
 
 export const HiddenPlayer = styled.div`

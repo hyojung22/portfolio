@@ -101,6 +101,10 @@ const LpButton = styled.button`
   cursor: pointer !important;
   background: none;
   border: none;
+
+  * {
+    cursor: pointer !important;
+  }
 `
 
 const PlayerBar = styled.div`
@@ -182,13 +186,6 @@ const CtrlBtn = styled.button`
   cursor: pointer !important;
   background: rgba(208, 208, 208, 0);
   border: none;
-
-  &:hover {
-    background: #c0c0c0;
-  }
-  &:active {
-    background: #b0b0b0;
-  }
 
   * {
     cursor: pointer !important;

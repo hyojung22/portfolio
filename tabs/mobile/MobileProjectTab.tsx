@@ -61,7 +61,7 @@ export default function MobileProjectTab() {
       </YearCard>
 
       {/* 프로젝트 목록 */}
-      <div className="overflow-x-hidden">
+      <div className="cursor-pointer overflow-x-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={curYear}
@@ -201,6 +201,10 @@ const ProjectCard = styled.div`
   background: white;
   border-radius: 12px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  * {
+    cursor: pointer !important;
+  }
 
   &:active {
     opacity: 0.8;

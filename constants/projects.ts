@@ -87,7 +87,19 @@ export const PROJECTS: Project[] = [
     type: '개인',
     role: '프론트엔드 · UI/UX 디자인',
     platform: 'Web',
-    images: [],
+    images: [
+      {
+        type: 'group',
+        images: [
+          '/images/project/portfolio/portfolio1.jpg',
+          '/images/project/portfolio/portfolio2.jpg',
+          '/images/project/portfolio/portfolio3.jpg',
+        ],
+      },
+      { type: 'single', src: '/images/project/portfolio/portfolio4.png' },
+      { type: 'single', src: '/images/project/portfolio/portfolio5.png' },
+      { type: 'single', src: '/images/project/portfolio/portfolio6.png' },
+    ],
     githubUrl: 'https://github.com/hyojung22/portfolio',
     deployUrl: 'https://minihompy-portfolio.vercel.app/',
     readmeUrl: '',
@@ -240,7 +252,7 @@ export const PROJECTS: Project[] = [
       { type: 'single', src: '/images/project/globalgo/globalgo5.png' },
     ],
     githubUrl: 'https://github.com/2025-SMHRD-SW-FullStack/Aha_Aha_Proj',
-    deployUrl: 'http://globalgo.it.com:5173/',
+    deployUrl: '',
     readmeUrl: '',
     skillKeywords: [
       {
@@ -314,7 +326,8 @@ export const PROJECTS: Project[] = [
     ],
     githubUrl: 'https://github.com/2023-AISCHOOL-APP/Senimo',
     deployUrl: '',
-    readmeUrl: '',
+    readmeUrl:
+      'https://www.notion.so/Senimo-3338ff037f4e8003840be8f767032287?source=copy_link',
     skillKeywords: [
       {
         name: 'Retrofit',
