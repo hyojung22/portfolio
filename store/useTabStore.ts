@@ -1,3 +1,5 @@
+'use client'
+
 import { create } from 'zustand'
 
 import { ProjectMenu, SubMenu, Tab } from '@/constants'

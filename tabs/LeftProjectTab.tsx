@@ -1,3 +1,5 @@
+'use client'
+
 import { Fragment } from 'react/jsx-runtime'
 import { FaFolder } from 'react-icons/fa'
 import styled from 'styled-components'
