@@ -53,10 +53,9 @@ export const PROJECTS: Project[] = [
     award: '',
     desc: '싸이월드 미니홈피 디자인을 기반으로 한 개발자 포트폴리오 웹사이트입니다. 레트로 감성 UI를 구현하면서도 Next.js 기반의 현대적인 프론트엔드 구조를 적용했습니다.',
     tasks: [
-      'Zustand와 커스텀 훅으로 스크롤이랑 메뉴 클릭을 양방향으로 동기화했습니다.',
-      'framer-motion custom variants로 방향성 있는 탭 전환 애니메이션을 구현했습니다.',
-      'Tailwind CSS와 styled-components를 함께 사용해 레이아웃과 레트로 UI 디테일을 분리해서 작업했습니다.',
-      'constants와 types를 파일별로 분리해 확장하기 쉬운 구조로 설계했습니다.',
+      'Zustand와 커스텀 훅으로 스크롤과 메뉴 클릭 이벤트를 양방향으로 동기화했습니다.',
+      'framer-motion custom variants로 탭 전환 방향에 따른 슬라이드 애니메이션을 구현했습니다.',
+      'Tailwind CSS와 styled-components를 역할에 따라 분리해 레이아웃과 레트로 UI 디테일을 구분해서 작업했습니다.',
     ],
     skills: [
       'Next.js',
@@ -112,12 +111,7 @@ export const PROJECTS: Project[] = [
       {
         name: 'useRef',
         description:
-          'isScrollingRef로 스크롤이랑 메뉴 클릭 이벤트가 서로 충돌하는 문제를 잡았습니다.',
-      },
-      {
-        name: 'constants/types 구조 설계',
-        description:
-          '데이터와 타입을 파일별로 분리해 수정이나 확장이 필요할 때 영향 범위를 최소화했습니다.',
+          'isScrollingRef로 스크롤과 메뉴 클릭 이벤트 충돌을 방지해 UX를 개선했습니다.',
       },
     ],
   },
@@ -342,7 +336,7 @@ export const PROJECTS: Project[] = [
       {
         name: 'Navigation Component',
         description:
-          'NavGraph로 Fragment 전환을 관리해 화면 흐름을 일관되게 유지했습니다.',
+          'FragmentManager의 beginTransaction으로 Fragment를 직접 교체해 화면 전환을 구현했습니다.',
       },
     ],
   },
