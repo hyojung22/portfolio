@@ -172,7 +172,6 @@ npm run dev
 - 기본은 **Server Component**
 - React 상태/훅 사용 시 → **Client Component**
 - Zustand 사용 컴포넌트 → **Client Component**
-- `layout`, `section` → **Server Component** 유지
 
 ### import 경로 Alias
 
