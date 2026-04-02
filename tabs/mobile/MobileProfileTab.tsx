@@ -102,8 +102,7 @@ export default function MobileProfileTab() {
             </MobileSkillRow>
           ))}
           <MobileSkillLegend>
-            청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능 &nbsp;·&nbsp;
-            핑크색: 추가 예정
+            청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능
           </MobileSkillLegend>
         </section>
         {/* 5. 자격증 */}

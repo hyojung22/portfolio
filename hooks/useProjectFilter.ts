@@ -15,9 +15,11 @@ export function getEndMonth(p: Project) {
 
 export function getDateLabel(p: Project) {
   const s = `${p.year}.${String(p.startMonth).padStart(2, '0')}`
-  const e = p.ongoing
-    ? '진행중'
-    : `${p.year}.${String(getEndMonth(p)).padStart(2, '0')}`
+
+  if (p.ongoing) return `${s} ~`
+  if (p.startMonth === p.endMonth) return s
+
+  const e = `${p.year}.${String(getEndMonth(p)).padStart(2, '0')}`
   return `${s} ~ ${e}`
 }
 

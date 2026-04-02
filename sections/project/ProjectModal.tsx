@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom'
 import { IoClose } from 'react-icons/io5'
 
 import { Project } from '@/constants'
+import { getDateLabel } from '@/hooks/useProjectFilter'
 
 import {
   Carousel,
@@ -50,21 +51,6 @@ interface Props {
   onClose: () => void
 }
 
-const today = new Date()
-const curY = today.getFullYear()
-const curM = today.getMonth() + 1
-
-function getEndMonth(p: Project) {
-  if (!p.ongoing) return p.endMonth as number
-  return p.year === curY ? curM : 12
-}
-
-function getDateLabel(p: Project) {
-  const s = `${p.year} . ${String(p.startMonth).padStart(2, '0')}`
-  const e = p.ongoing ? '진행중' : String(getEndMonth(p)).padStart(2, '0')
-  return `${s} ~ ${e}`
-}
-
 const SKILL_CATEGORY_KEYS: (keyof Project['skillCategories'])[] = [
   'Frontend',
   'Backend',
@@ -107,15 +93,7 @@ export default function ProjectModal({ project: p, onClose }: Props) {
               </span>
 
               {p.award && (
-                <span className="flex items-center gap-1">
-                  <span
-                    className="mr-2 ml-2 text-sm text-gray-300"
-                    style={{ marginBottom: '0.5px' }}
-                  >
-                    |
-                  </span>
-                  {p.award}
-                </span>
+                <span className="flex items-center gap-1">{p.award}</span>
               )}
             </ModalMeta>
           </ModalHeader>

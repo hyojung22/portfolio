@@ -203,8 +203,7 @@ export default function ResumePrint() {
           </SkillRow>
         ))}
         <SkillLegend>
-          청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능 &nbsp;·&nbsp; 핑크색:
-          추가 예정
+          청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능
         </SkillLegend>
       </Section>
 
@@ -219,10 +218,11 @@ export default function ResumePrint() {
               <ProjTitleLinks>
                 <ProjPeriod>
                   {p.year}.{String(p.startMonth).padStart(2, '0')}
-                  {' ~ '}
                   {p.ongoing
-                    ? '진행중'
-                    : `${p.year}.${String(p.endMonth).padStart(2, '0')}`}
+                    ? ' ~'
+                    : p.startMonth === p.endMonth
+                      ? ''
+                      : ` ~ ${p.year}.${String(p.endMonth).padStart(2, '0')}`}
                 </ProjPeriod>
                 {p.deployUrl && (
                   <ProjIconLink href={p.deployUrl} target="_blank">

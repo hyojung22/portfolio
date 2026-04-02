@@ -28,10 +28,6 @@ export default function SkillSection() {
           <LegendDot $color={COLORS.gray200} />
           사용 가능
         </LegendItem>
-        <LegendItem>
-          <LegendDotOutline />
-          추가 예정
-        </LegendItem>
       </Legend>
     </div>
   )
@@ -124,13 +120,5 @@ const LegendDot = styled.span<{ $color: string }>`
   width: 10px;
   height: 10px;
   background-color: ${({ $color }) => $color};
-  border-radius: 50%;
-`
-const LegendDotOutline = styled.span`
-  flex-shrink: 0;
-  width: 10px;
-  height: 10px;
-  background-color: #ffffff;
-  border: 1px dashed #ababab;
   border-radius: 50%;
 `

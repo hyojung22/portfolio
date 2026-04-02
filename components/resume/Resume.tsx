@@ -283,8 +283,7 @@ export default function Resume() {
           </SkillRow>
         ))}
         <SkillLegend>
-          청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능 &nbsp;·&nbsp; 핑크색:
-          추가 예정
+          청록색: 주로 사용 &nbsp;·&nbsp; 회색: 사용 가능
         </SkillLegend>
       </Section>
 
@@ -301,13 +300,15 @@ export default function Resume() {
             >
               {p.id === 'portfolio'
                 ? '포트폴리오'
-                : p.id === 'iroomclass'
-                  ? 'iRoomClass'
-                  : p.id === 'globalgo'
-                    ? 'GlobalGo'
-                    : p.id === 'senimo'
-                      ? 'Senimo'
-                      : 'JJapJi'}
+                : p.id === 'quickjob'
+                  ? 'QuickJob'
+                  : p.id === 'iroomclass'
+                    ? 'iRoomClass'
+                    : p.id === 'globalgo'
+                      ? 'GlobalGo'
+                      : p.id === 'senimo'
+                        ? 'Senimo'
+                        : 'JJapJi'}
             </ProjTab>
           ))}
         </ProjTabs>
@@ -320,10 +321,11 @@ export default function Resume() {
                 <ProjPeriod>
                   {activeProject.year}.
                   {String(activeProject.startMonth).padStart(2, '0')}
-                  {' ~ '}
                   {activeProject.ongoing
-                    ? ''
-                    : `${activeProject.year}.${String(activeProject.endMonth).padStart(2, '0')}`}
+                    ? ' ~'
+                    : activeProject.startMonth === activeProject.endMonth
+                      ? ''
+                      : ` ~ ${activeProject.year}.${String(activeProject.endMonth).padStart(2, '0')}`}
                 </ProjPeriod>
                 {activeProject.deployUrl && (
                   <ProjIconLink
@@ -350,10 +352,12 @@ export default function Resume() {
             <MobilePeriod>
               {activeProject.year}.
               {String(activeProject.startMonth).padStart(2, '0')}
-              {' ~ '}
               {activeProject.ongoing
-                ? ''
-                : `${activeProject.year}.${String(activeProject.endMonth).padStart(2, '0')}`}
+                ? ' ~'
+                : activeProject.startMonth === activeProject.endMonth &&
+                    activeProject.year === activeProject.year
+                  ? ''
+                  : ` ~ ${activeProject.year}.${String(activeProject.endMonth).padStart(2, '0')}`}
             </MobilePeriod>
 
             {/* 팀/개인 + 아이콘 */}

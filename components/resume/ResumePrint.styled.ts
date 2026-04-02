@@ -197,7 +197,7 @@ export const ChipGroup = styled.div`
 `
 
 export const Chip = styled.span<{
-  $level: '주로 사용' | '사용 가능' | '추가 예정'
+  $level: '주로 사용' | '사용 가능'
 }>`
   padding: 2px 8px;
   margin: 2px;

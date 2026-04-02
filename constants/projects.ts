@@ -41,6 +41,77 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  // QuickJob
+  {
+    id: 'quickjob',
+    year: 2026,
+    startMonth: 4,
+    endMonth: 4,
+    ongoing: false,
+    title: 'QuickJob: 구인구직 매칭 플랫폼',
+    badge: 'solo',
+    award: '',
+    desc: 'React Native 모바일 앱 개발을 학습하기 위해 제작한 구인구직 매칭 플랫폼입니다. Firebase 인증 및 Firestore 연동, Zustand 전역 상태관리, 역할 기반 화면 분기 등 실무에서 사용하는 모바일 앱 개발 흐름을 직접 구현하며 익혔습니다.',
+    tasks: [
+      'Firebase Authentication으로 이메일 로그인 및 자동로그인을 구현했습니다.',
+      'Firestore 실시간 데이터 연동과 복합 인덱스를 활용해 공고 목록 및 지원 현황을 구현했습니다.',
+      'Zustand로 인증 상태와 공고 목록을 전역 관리하고 역할(구직자/업체)에 따라 화면을 분기했습니다.',
+    ],
+    skills: ['React Native', 'TypeScript', 'Zustand', 'Firebase', 'Expo'],
+    skillCategories: {
+      Mobile: ['React Native', 'TypeScript', 'Zustand', 'Firebase', 'Expo'],
+    },
+    mySkills: ['React Native', 'TypeScript', 'Zustand', 'Firebase', 'Expo'],
+    type: '개인',
+    role: '프론트엔드 · 모바일',
+    platform: 'Mobile',
+    images: [
+      {
+        type: 'group',
+        images: [
+          '/images/project/quickjob/quickjob1.jpg',
+          '/images/project/quickjob/quickjob2.jpg',
+          '/images/project/quickjob/quickjob3.jpg',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/quickjob/quickjob4.jpg',
+          '/images/project/quickjob/quickjob5.jpg',
+          '/images/project/quickjob/quickjob6.jpg',
+        ],
+      },
+      {
+        type: 'group',
+        images: [
+          '/images/project/quickjob/quickjob7.jpg',
+          '/images/project/quickjob/quickjob8.jpg',
+          '/images/project/quickjob/quickjob9.jpg',
+        ],
+      },
+    ],
+    githubUrl: 'https://github.com/hyojung22/QuickJob',
+    deployUrl: '',
+    readmeUrl: '',
+    skillKeywords: [
+      {
+        name: 'Zustand',
+        description:
+          '인증 상태와 공고 목록을 전역으로 관리하고 역할에 따라 화면을 분기했습니다.',
+      },
+      {
+        name: 'Firebase Firestore',
+        description:
+          'Firestore 실시간 데이터 연동과 복합 인덱스로 공고 필터링 및 정렬을 구현했습니다.',
+      },
+      {
+        name: 'useFocusEffect',
+        description:
+          '탭 포커스 시마다 최신 데이터를 불러와 실시간으로 화면을 갱신했습니다.',
+      },
+    ],
+  },
   // 포트폴리오
   {
     id: 'portfolio',

@@ -1,4 +1,4 @@
-export type SkillLevel = '주로 사용' | '사용 가능' | '추가 예정'
+export type SkillLevel = '주로 사용' | '사용 가능'
 
 export interface Skill {
   name: string
@@ -37,8 +37,8 @@ export const SKILLS: SkillCategory[] = [
     skills: [
       { name: 'Kotlin', level: '사용 가능' },
       { name: 'Android Studio', level: '사용 가능' },
-      { name: 'React Native', level: '추가 예정' },
-      { name: 'Firebase', level: '추가 예정' },
+      { name: 'React Native', level: '사용 가능' },
+      { name: 'Firebase', level: '사용 가능' },
     ],
   },
   {

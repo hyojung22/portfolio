@@ -332,7 +332,7 @@ export const SkillLabel = styled.div`
 export const ChipGroup = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
 
   @media (max-width: 767px) {
     margin-left: -2px;
@@ -340,7 +340,7 @@ export const ChipGroup = styled.div`
 `
 
 export const Chip = styled.span<{
-  $level: '주로 사용' | '사용 가능' | '추가 예정'
+  $level: '주로 사용' | '사용 가능'
 }>`
   padding: 3px 10px;
   margin: 3px;
