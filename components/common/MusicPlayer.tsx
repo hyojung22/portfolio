@@ -42,6 +42,7 @@ export default function MusicPlayer() {
     isPlaying,
     volume,
     isListOpen,
+    isDevMode,
     setCurrentIndex,
     setIsPlaying,
     setVolume,
@@ -131,6 +132,7 @@ export default function MusicPlayer() {
             src="/images/music/cd.png"
             alt="CD 이미지"
             fill
+            sizes="40px"
             style={{
               objectFit: 'cover',
               objectPosition: 'center top',
@@ -191,7 +193,10 @@ export default function MusicPlayer() {
       {/* 플레이리스트 */}
       {isListOpen && (
         <PlayList>
-          {PLAYLIST.map((track, i) => (
+          {PLAYLIST.filter((track) => {
+            if (!isDevMode && track.title === 'Hello World') return false
+            return true
+          }).map((track, i) => (
             <PlayListItem
               key={track.id}
               $active={i === currentIndex}

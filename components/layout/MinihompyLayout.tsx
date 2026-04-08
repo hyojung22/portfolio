@@ -4,7 +4,7 @@ import TabMenu from '@/layout/TabMenu'
 
 export default function MinihompyLayout() {
   return (
-    <div className="relative aspect-[1084/729] w-[900px]">
+    <div className="relative aspect-1084/729 w-225">
       {/* SVG 배경 */}
       <BookSvg className="absolute top-0 left-0 h-full w-full" />
 

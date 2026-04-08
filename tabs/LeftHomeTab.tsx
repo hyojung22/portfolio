@@ -99,7 +99,7 @@ export default function LeftHomeTab() {
 
 export function TodayIs({ fontSize }: { fontSize?: string }) {
   return (
-    <>
+    <div className="desktop:flex-col desktop:items-start desktop:gap-0.5 flex flex-row items-center gap-1">
       <span
         className="text-[9.5px]"
         style={{
@@ -111,17 +111,23 @@ export function TodayIs({ fontSize }: { fontSize?: string }) {
           transform: 'scaleY(0.8)', // 0.7 = 세로 70%로 압축
           transformOrigin: 'left center',
           display: 'inline-block',
+          marginRight: '16px',
         }}
       >
         TODAY IS..
       </span>
-      <span className="text-[10px]" style={{ fontSize: fontSize }}>
-        🩷
-      </span>
-      <span className="text-[13px] font-medium" style={{ fontSize: fontSize }}>
-        설레임
-      </span>
-    </>
+      <div className="flex items-center gap-1">
+        <span className="text-[10px]" style={{ fontSize: fontSize }}>
+          😇
+        </span>
+        <span
+          className="text-[13px] font-medium"
+          style={{ fontSize: fontSize }}
+        >
+          커밋은 했습니다..
+        </span>
+      </div>
+    </div>
   )
 }
 

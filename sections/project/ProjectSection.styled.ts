@@ -5,20 +5,32 @@ import { COLORS } from '@/constants'
 export const YearHeader = styled.div`
   display: flex;
   flex-shrink: 0;
-  align-items: center;
+  align-items: stretch;
   margin-right: 20px;
   overflow: hidden;
   background: #fff;
   border: 1px solid #c8c8c8;
   border-radius: 4px 4px 0 0;
 `
+
 export const YearLeftBox = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-width: 72px;
   padding: 8px 14px;
-  border-right: 1px dashed #c8c8c8;
+  margin-right: 10px;
+
+  &::after {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    bottom: 8px;
+    content: '';
+    border-right: 1.5px dashed #c8c8c8;
+  }
 `
 export const YearNum = styled.div`
   font-size: 26px;
@@ -26,79 +38,52 @@ export const YearNum = styled.div`
   line-height: 1;
   color: ${COLORS.panelSubTitle};
 `
+
 export const YearSub = styled.div`
   margin-top: 2px;
   font-size: 13px;
   color: #aaa;
 `
-export const YearRight = styled.div`
+
+export const YearsRow = styled.div`
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  align-items: center;
+  padding-right: 12px;
+`
+export const YearTab = styled.div<{ $isActive: boolean }>`
   display: flex;
   flex: 1;
   flex-direction: column;
-`
-export const YearTopRow = styled.div`
-  display: flex;
-  gap: 6px;
   align-items: center;
-  padding: 6px 10px;
-  border-bottom: 1px dashed #d4d4d4;
-`
-export const NavBtn = styled.span`
-  padding: 1px 3px;
-  font-size: 7px;
-  color: #939391;
+  padding: 7px 0 5px;
   cursor: pointer !important;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  background: ${({ $isActive }) => ($isActive ? COLORS.panelSubTitle : '#fff')};
+  border-radius: 8px;
+  transition: all 0.15s;
+
+  * {
+    cursor: pointer !important;
+  }
 
   &:hover {
-    color: ${COLORS.panelSubTitle};
-    background: #e0f4f9;
+    background: ${({ $isActive }) =>
+      $isActive ? COLORS.panelSubTitle : '#f0f9ff'};
   }
 `
-export const YearCurLabel = styled.span`
-  font-size: 14px;
-  font-weight: 700;
-  color: #939391;
-`
-export const YearsRow = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-`
-export const YearSepChar = styled.span`
-  margin: 0 10px;
-  font-size: 10px;
-  color: #ddd;
-`
-export const YearTab = styled.span<{ $isActive: boolean }>`
-  padding: 2px 4px;
-  font-size: 13px;
-  font-weight: ${({ $isActive }) => ($isActive ? 900 : 400)};
-  color: ${({ $isActive }) => ($isActive ? COLORS.panelSubTitle : '#aaa')};
-  cursor: pointer !important;
 
-  &:hover {
-    color: ${COLORS.panelSubTitle};
-  }
-`
-export const YearBotRow = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  padding: 5px 10px;
+export const YearTabCount = styled.span<{ $isActive: boolean }>`
   font-size: 11px;
-  color: #aaa;
+  color: ${({ $isActive }) => ($isActive ? 'rgba(255,255,255,0.8)' : '#ccc')};
 `
-export const ProjBadge = styled.span`
-  padding: 1px 5px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #e07800;
-  background: #fff3e0;
-  border-radius: 2px;
+
+export const YearTabLabel = styled.span<{ $isActive: boolean }>`
+  font-size: 16px;
+  font-weight: ${({ $isActive }) => ($isActive ? 700 : 400)};
+  color: ${({ $isActive }) => ($isActive ? '#fff' : '#aaa')};
 `
+
 export const DiaryEntry = styled.div<{ $hasProj: boolean }>`
   flex-shrink: 0;
   padding: 15px;
@@ -163,10 +148,7 @@ export const Badge = styled.span<{ $badge: 'team' | 'solo' }>`
 
   border-radius: 2px;
 `
-export const AwardTag = styled.span`
-  font-size: 12px;
-  color: #e07800;
-`
+
 export const SkillsText = styled.span`
   font-size: 13px;
   color: #888;

@@ -364,12 +364,71 @@ export const DetailTitle = styled.div`
   color: #222;
 `
 
+export const TaskList = styled.div`
+  padding-left: 16px;
+  border-left: 3px solid ${COLORS.panelSubTitle};
+`
+
 export const TaskItem = styled.div`
   display: flex;
-  gap: 6px;
-  padding-top: 6px;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+
+  &::before {
+    flex-shrink: 0;
+    font-size: 18px;
+    line-height: 1.5;
+    color: ${COLORS.panelSubTitle};
+    content: '•';
+  }
+`
+
+export const FeatureItem = styled.div`
+  padding: 10px 0;
+`
+
+export const FeatureTitle = styled.div`
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+`
+
+export const FeatureDesc = styled.div`
   padding-left: 4px;
-  font-size: 16px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666;
+`
+
+export const TroubleItem = styled.div<{
+  $type: 'problem' | 'cause' | 'solution' | 'result'
+}>`
+  padding: 16px 20px;
+  margin-bottom: 15px;
+  background: #fafafa;
+  background: ${({ $type }) =>
+    $type === 'problem'
+      ? '#FEF2F2'
+      : $type === 'cause'
+        ? '#FFF7ED'
+        : $type === 'solution'
+          ? '#F0FDF4'
+          : '#F0FDFA'};
+`
+export const TroubleLabel = styled.div`
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+`
+
+export const TroubleText = styled.div`
+  font-size: 15px;
+  line-height: 1.7;
   color: #555;
 `

@@ -9,12 +9,15 @@ interface MusicStore {
   isPlaying: boolean
   volume: number
   isListOpen: boolean
+  isDevMode: boolean
   setCurrentIndex: (index: number) => void
   setIsPlaying: (playing: boolean) => void
   setVolume: (volume: number) => void
   toggleList: () => void
   nextTrack: () => void
   prevTrack: () => void
+  setIsDevMode: (value: boolean) => void
+  setIsListOpen: (value: boolean) => void
 }
 
 export const useMusicStore = create<MusicStore>((set) => ({
@@ -22,6 +25,7 @@ export const useMusicStore = create<MusicStore>((set) => ({
   isPlaying: false,
   volume: 50,
   isListOpen: false,
+  isDevMode: false,
   setCurrentIndex: (index) => set({ currentIndex: index }),
   setIsPlaying: (playing) => set({ isPlaying: playing }),
   setVolume: (volume) => set({ volume }),
@@ -37,4 +41,6 @@ export const useMusicStore = create<MusicStore>((set) => ({
         (state.currentIndex - 1 + PLAYLIST.length) % PLAYLIST.length,
       isPlaying: true,
     })),
+  setIsDevMode: (value: boolean) => set({ isDevMode: value }),
+  setIsListOpen: (value) => set({ isListOpen: value }),
 }))

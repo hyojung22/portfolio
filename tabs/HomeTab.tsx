@@ -3,9 +3,32 @@
 import Image from 'next/image'
 import styled from 'styled-components'
 
-import { COLORS, MY_WORDS } from '@/constants'
+import { COLORS, MY_WORDS, PLAYLIST } from '@/constants'
+import { useMusicStore } from '@/store/useMusicStore'
 
 export default function HomeTab() {
+  const { setCurrentIndex, setIsPlaying, isDevMode, setIsDevMode } =
+    useMusicStore()
+
+  const handleDevMode = (): void => {
+    console.log(
+      '%c🚀 dev_mode = true',
+      'color: #ff6600; font-size: 14px; font-weight: bold;',
+    )
+    console.log('%cWelcome, developer 👀', 'color: #999;')
+
+    console.table(PLAYLIST)
+    const devIndex = PLAYLIST.findIndex(
+      (track) => track.title === 'Hello World',
+    )
+
+    if (devIndex !== -1) {
+      setCurrentIndex(devIndex)
+      setIsPlaying(true)
+    }
+    setIsDevMode(true)
+  }
+
   return (
     <div className="mr-2 ml-4">
       {/* Mini Room 섹션 */}
@@ -23,8 +46,9 @@ export default function HomeTab() {
         >
           Mini Room
         </h3>
-        <div
-          className="relative mt-2 mb-4 w-full border"
+        <Wrapper
+          $devMode={isDevMode}
+          className="mt-2 mb-4 w-full border"
           style={{ borderColor: COLORS.border, height: '245px' }}
         >
           <Image
@@ -32,10 +56,15 @@ export default function HomeTab() {
             loading="eager"
             alt="미니룸"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            // sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 90vw"
             style={{ objectFit: 'cover', objectPosition: 'center top' }}
           />
-        </div>
+
+          <DevHotspot $devMode={isDevMode} onClick={handleDevMode} />
+
+          <HintBubble>이 컴퓨터… 뭔가 있다 👀</HintBubble>
+        </Wrapper>
       </section>
 
       {/* My Words 섹션 */}
@@ -73,6 +102,52 @@ export default function HomeTab() {
     </div>
   )
 }
+
+const HintBubble = styled.div`
+  position: absolute;
+  bottom: 45%;
+  left: 37%;
+  z-index: 2;
+  padding: 6px 12px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: bold;
+  color: #030303;
+
+  background: #fefefe;
+  border: 1.5px solid #030303;
+  border-radius: 8px;
+
+  opacity: 0;
+  transform: translate(-50%, -30%);
+  transition: 0.2s;
+`
+
+const Wrapper = styled.div<{ $devMode: boolean }>`
+  position: relative;
+
+  filter: ${({ $devMode }) =>
+    $devMode ? 'brightness(0.9) contrast(1.1)' : 'none'};
+  transition: 0.3s;
+`
+
+const DevHotspot = styled.div<{ $devMode: boolean }>`
+  position: absolute;
+  top: 125px;
+  right: 160px;
+  z-index: 2;
+  width: 55px;
+  height: 60px;
+  cursor: ${({ $devMode }) => ($devMode ? 'default' : 'pointer')} !important;
+
+  &:hover {
+    transform: ${({ $devMode }) => ($devMode ? 'none' : 'scale(1.05)')};
+  }
+
+  &:hover + ${HintBubble} {
+    opacity: ${({ $devMode }) => ($devMode ? '0' : '1')};
+  }
+`
 
 const WordList = styled.ul`
   display: flex;

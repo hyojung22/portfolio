@@ -1,12 +1,50 @@
 'use client'
 
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { ABOUT_ME, COLORS, PROFILE_LINKS } from '@/constants'
+import { ABOUT_ME, COLORS, PLAYLIST, PROFILE_LINKS } from '@/constants'
+import { useMusicStore } from '@/store/useMusicStore'
 import { GenderSvg, TodayIs } from '@/tabs/LeftHomeTab'
 
 export default function MobileProfileCard() {
+  const { setCurrentIndex, setIsPlaying, setIsListOpen } = useMusicStore()
+
+  const [showHint, setShowHint] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const hasSeen = localStorage.getItem('dev_hint_seen')
+
+    if (!hasSeen) {
+      const raf = requestAnimationFrame(() => {
+        setShowHint(true)
+
+        setTimeout(() => {
+          setShowHint(false)
+        }, 2500)
+      })
+
+      localStorage.setItem('dev_hint_seen', 'true')
+
+      return () => cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  const handleDevMode = () => {
+    const devIndex = PLAYLIST.findIndex(
+      (track) => track.title === 'Hello World',
+    )
+
+    if (devIndex !== -1) {
+      setCurrentIndex(devIndex)
+      setIsPlaying(true)
+      setIsListOpen(true)
+    }
+  }
+
   return (
     <>
       <Card className="flex flex-col gap-3">
@@ -86,22 +124,23 @@ export default function MobileProfileCard() {
         >
           Mini Room
         </h3>
-        <div
-          className="relative mt-2 mb-3 w-full border"
-          style={{
-            borderColor: COLORS.border,
-            height: 'clamp(180px, 50vw, 260px)',
-          }}
-        >
+        <Wrapper>
           <Image
             src="/images/home/miniroom1.png"
             loading="eager"
             alt="미니룸"
-            fill
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center top' }}
+            width={678}
+            height={364}
+            // fill
+            // sizes="(max-width: 768px) 100vw, 90vw"
+            // style={{ objectFit: 'cover', objectPosition: 'center top' }}
+            style={{ width: '100%', height: 'auto' }}
           />
-        </div>
+
+          <DevHotspot onClick={handleDevMode} />
+
+          {showHint && <HintBubble>이 컴퓨터… 뭔가 있다 👀</HintBubble>}
+        </Wrapper>
       </Card>
     </>
   )
@@ -152,6 +191,56 @@ function ProfileInfo() {
     </div>
   )
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  /* height: clamp(180px, 50vw, 260px); */
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid ${COLORS.border};
+`
+
+const DevHotspot = styled.div`
+  position: absolute;
+  top: 55%;
+  left: 64%;
+  z-index: 2;
+  width: 8%;
+  height: 18%;
+  cursor: pointer !important;
+  transform: translate(-50%, -50%);
+`
+
+const HintBubble = styled.div`
+  position: absolute;
+  top: 45%;
+  left: 34%;
+  z-index: 2;
+
+  padding: 1vw 1.5vw;
+  font-family: var(--font-pixel);
+  font-size: 1.9vw;
+  font-weight: bold;
+
+  background: #fff;
+  border: 0.2vw solid #000;
+  border-radius: 1.2vw;
+  transform: translate(-50%, -50%);
+
+  animation: fadeInUp 0.4s ease;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -40%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+`
 
 const Card = styled.div`
   padding: 16px;

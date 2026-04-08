@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { IoPause, IoPlay, IoPlayBack, IoPlayForward } from 'react-icons/io5'
 import styled, { css, keyframes } from 'styled-components'
@@ -10,27 +9,32 @@ import { PLAYLIST } from '@/constants'
 import { useMusicStore } from '@/store/useMusicStore'
 
 export default function MobileMusicPlayer() {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const { currentIndex, isPlaying, setIsPlaying, nextTrack, prevTrack } =
-    useMusicStore()
+  const {
+    currentIndex,
+    isPlaying,
+    setIsPlaying,
+    nextTrack,
+    prevTrack,
+    isListOpen,
+    setIsListOpen,
+  } = useMusicStore()
 
   const currentTrack = PLAYLIST[currentIndex]
 
   return createPortal(
-    <Wrapper $isOpen={isOpen}>
-      <LpButton onClick={() => setIsOpen((prev) => !prev)}>
+    <Wrapper $isOpen={isListOpen}>
+      <LpButton onClick={() => setIsListOpen(!isListOpen)}>
         <Image
           src="/images/music/music.png"
           fill
           sizes="80px"
           alt="뮤직플레이어"
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'contain', transform: 'translateZ(0)' }}
         />
       </LpButton>
 
-      {isOpen && (
-        <PlayerBar onClick={() => setIsOpen(false)}>
+      {isListOpen && (
+        <PlayerBar onClick={() => setIsListOpen(false)}>
           <TitleWrapper $isPlaying={isPlaying}>
             <TitleText $isPlaying={isPlaying}>
               {currentTrack.artist} - {currentTrack.title}
@@ -77,10 +81,12 @@ const Wrapper = styled.div<{ $isOpen: boolean }>`
   z-index: 100;
   display: flex;
   align-items: center;
+  transform: translateZ(0);
   transition:
     left 0.25s ease,
     right 0.25s ease,
     transform 0.25s ease;
+  will-change: transform;
 
   ${({ $isOpen }) =>
     !$isOpen
@@ -101,6 +107,9 @@ const LpButton = styled.button`
   cursor: pointer !important;
   background: none;
   border: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 
   * {
     cursor: pointer !important;

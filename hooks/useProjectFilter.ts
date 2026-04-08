@@ -25,12 +25,11 @@ export function getDateLabel(p: Project) {
 
 export function useProjectFilter(activeProjectMenu?: string) {
   const allYears = PROJECTS.map((p) => p.year)
-  const minYear = Math.min(...allYears)
-  const maxYear = Math.max(...allYears)
-  const years = Array.from(
-    { length: maxYear - minYear + 1 },
-    (_, i) => minYear + i,
-  )
+  // const years = Array.from(
+  //   { length: maxYear - minYear + 1 },
+  //   (_, i) => minYear + i,
+  // )
+  const years = [...new Set(PROJECTS.map((p) => p.year))].sort((a, b) => a - b)
 
   const [curIdx, setCurIdx] = useState(years.length - 1)
   const [direction, setDirection] = useState(0)

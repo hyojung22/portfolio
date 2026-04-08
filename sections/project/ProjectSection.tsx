@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { PROJECTS } from '@/constants'
 import { getDateLabel, useProjectFilter } from '@/hooks/useProjectFilter'
 import { useTabStore } from '@/store/useTabStore'
 
@@ -14,35 +15,28 @@ import {
   DiaryEntry,
   DiaryFooter,
   DiaryTitle,
-  NavBtn,
   NoProj,
-  ProjBadge,
   SkillsText,
-  YearBotRow,
-  YearCurLabel,
   YearHeader,
   YearLeftBox,
   YearNum,
-  YearRight,
-  YearSepChar,
   YearsRow,
   YearSub,
   YearTab,
-  YearTopRow,
+  YearTabCount,
+  YearTabLabel,
 } from './ProjectSection.styled'
 
 export default function ProjectSection() {
   const { activeProjectMenu } = useTabStore()
   const {
     years,
-    curIdx,
     curYear,
     direction,
     selectedProject,
     setSelectedProject,
     changeYear,
     filtered,
-    monthStr,
   } = useProjectFilter(activeProjectMenu)
 
   return (
@@ -53,40 +47,21 @@ export default function ProjectSection() {
           <YearNum>{curYear}</YearNum>
           <YearSub>year</YearSub>
         </YearLeftBox>
-        <YearRight>
-          <YearTopRow>
-            <div className="mt-0.5 flex items-center gap-2">
-              <NavBtn onClick={() => changeYear(Math.max(0, curIdx - 1))}>
-                ◀
-              </NavBtn>
-              <YearCurLabel>{curYear}</YearCurLabel>
-              <NavBtn
-                onClick={() =>
-                  changeYear(Math.min(years.length - 1, curIdx + 1))
-                }
+        <YearsRow>
+          {years.map((y) => {
+            const count = PROJECTS.filter((p) => p.year === y).length
+            return (
+              <YearTab
+                key={y}
+                $isActive={y === curYear}
+                onClick={() => changeYear(years.indexOf(y))}
               >
-                ▶
-              </NavBtn>
-            </div>
-            <YearsRow>
-              {years.map((y, i) => (
-                <span key={y}>
-                  {i > 0 && <YearSepChar>|</YearSepChar>}
-                  <YearTab
-                    $isActive={y === curYear}
-                    onClick={() => changeYear(years.indexOf(y))}
-                  >
-                    {y}
-                  </YearTab>
-                </span>
-              ))}
-            </YearsRow>
-          </YearTopRow>
-          <YearBotRow>
-            <ProjBadge>{filtered.length}개</ProjBadge>
-            {monthStr && <span>활동 : {monthStr}</span>}
-          </YearBotRow>
-        </YearRight>
+                <YearTabCount $isActive={y === curYear}>{count}개</YearTabCount>
+                <YearTabLabel $isActive={y === curYear}>{y}</YearTabLabel>
+              </YearTab>
+            )
+          })}
+        </YearsRow>
       </YearHeader>
 
       {/* 애니메이션 적용 */}
@@ -134,7 +109,6 @@ export default function ProjectSection() {
                     <Badge $badge={p.badge}>
                       {p.badge === 'team' ? '팀' : '개인'}
                     </Badge>
-                    {/* {p.award && <AwardTag>{p.award}</AwardTag>} */}
                     <SkillsText>
                       {p.skills.slice(0, 4).join(' · ')}
                       {p.skills.length > 4 ? ' ...' : ''}

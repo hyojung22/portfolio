@@ -24,31 +24,29 @@ export default function MobileProjectTab() {
       {/* 연도 필터 카드 */}
       <YearCard>
         <YearLeftBox>
-          <YearBig>{curYear}</YearBig>
-          <YearSub>year</YearSub>
-        </YearLeftBox>
-        <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <NavBtn onClick={() => changeYear(Math.max(0, curIdx - 1))}>
               ◀
             </NavBtn>
-            <YearLabel>{curYear}</YearLabel>
+            <YearBig>{curYear}</YearBig>
             <NavBtn
               onClick={() => changeYear(Math.min(years.length - 1, curIdx + 1))}
             >
               ▶
             </NavBtn>
           </div>
+          <YearSub>year</YearSub>
+        </YearLeftBox>
+        <div className="flex flex-col gap-3">
           <div className="flex items-center gap-5">
             {years.map((y) => (
-              <span key={y} className="flex items-center gap-1">
-                <YearTab
-                  $isActive={y === curYear}
-                  onClick={() => changeYear(years.indexOf(y))}
-                >
-                  {y}
-                </YearTab>
-              </span>
+              <YearTab
+                key={y}
+                $isActive={y === curYear}
+                onClick={() => changeYear(years.indexOf(y))}
+              >
+                {y}
+              </YearTab>
             ))}
           </div>
           <div className="flex items-center gap-3">
@@ -124,7 +122,7 @@ export default function MobileProjectTab() {
 const YearCard = styled.div`
   display: flex;
   gap: 20px;
-  align-items: ceneter;
+  align-items: center;
   padding: 16px;
   margin: 20px 0 10px;
   background: white;
@@ -153,12 +151,6 @@ const YearSub = styled.div`
   color: #aaa;
 `
 
-const YearLabel = styled.span`
-  font-size: 13px;
-  font-weight: 700;
-  color: ${COLORS.panelSubTitle};
-`
-
 const NavBtn = styled.button`
   padding: 1px 3px;
   font-size: 7px;
@@ -178,11 +170,6 @@ const YearTab = styled.span<{ $isActive: boolean }>`
   font-weight: ${({ $isActive }) => ($isActive ? 700 : 400)};
   color: ${({ $isActive }) => ($isActive ? COLORS.panelSubTitle : '#aaa')};
   cursor: pointer !important;
-
-  &:not(:last-child)::after {
-    margin-left: 10px;
-    content: '|';
-  }
 `
 
 const CountBadge = styled.span`

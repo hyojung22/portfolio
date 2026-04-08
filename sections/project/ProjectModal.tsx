@@ -18,6 +18,9 @@ import {
   DetailTitle,
   Divider,
   Dot,
+  FeatureDesc,
+  FeatureItem,
+  FeatureTitle,
   InfoLabel,
   InfoRow,
   InfoTable,
@@ -44,6 +47,10 @@ import {
   SkillRow,
   SkillTable,
   TaskItem,
+  TaskList,
+  TroubleItem,
+  TroubleLabel,
+  TroubleText,
 } from './ProjectModal.styled'
 
 interface Props {
@@ -229,14 +236,58 @@ export default function ProjectModal({ project: p, onClose }: Props) {
 
               <Divider />
 
-              {/* 7. 상세 내용 */}
-              <DetailTitle>상세 내용</DetailTitle>
-              {p.tasks.map((task, i) => (
-                <TaskItem key={i}>
-                  <span>{i + 1}.</span>
-                  <span>{task}</span>
-                </TaskItem>
-              ))}
+              {/* 7. 구현 내용 */}
+              <DetailTitle>구현 내용</DetailTitle>
+              <TaskList>
+                {p.tasks.map((task, i) => (
+                  <TaskItem key={i}>{task}</TaskItem>
+                ))}
+              </TaskList>
+
+              {/* 8. 기능 소개 */}
+              {p.features && p.features.length > 0 && (
+                <>
+                  <Divider />
+                  <SectionLabel>기능 소개</SectionLabel>
+                  {p.features.map((feature, i) => (
+                    <FeatureItem key={i}>
+                      <FeatureTitle>{feature.title}</FeatureTitle>
+                      <FeatureDesc>
+                        {feature.desc.map((d, j) => (
+                          <FeatureDesc key={j}>• {d}</FeatureDesc>
+                        ))}
+                      </FeatureDesc>
+                    </FeatureItem>
+                  ))}
+                </>
+              )}
+              {/* 9. Trouble Shooting */}
+              {p.troubleShooting && p.troubleShooting.length > 0 && (
+                <>
+                  <Divider />
+                  <SectionLabel>Trouble Shooting</SectionLabel>
+                  {p.troubleShooting.map((ts, i) => (
+                    <div key={i} className="mt-5">
+                      <TroubleItem $type="problem">
+                        <TroubleLabel>문제 상황</TroubleLabel>
+                        <TroubleText>{ts.problem}</TroubleText>
+                      </TroubleItem>
+                      <TroubleItem $type="cause">
+                        <TroubleLabel>원인 분석</TroubleLabel>
+                        <TroubleText>{ts.cause}</TroubleText>
+                      </TroubleItem>
+                      <TroubleItem $type="solution">
+                        <TroubleLabel>해결 방안</TroubleLabel>
+                        <TroubleText>{ts.solution}</TroubleText>
+                      </TroubleItem>
+                      <TroubleItem $type="result">
+                        <TroubleLabel>결과</TroubleLabel>
+                        <TroubleText>{ts.result}</TroubleText>
+                      </TroubleItem>
+                    </div>
+                  ))}
+                </>
+              )}
             </ModalContent>
           </ModalBody>
         </Modal>
