@@ -24,11 +24,6 @@ export function getDateLabel(p: Project) {
 }
 
 export function useProjectFilter(activeProjectMenu?: string) {
-  const allYears = PROJECTS.map((p) => p.year)
-  // const years = Array.from(
-  //   { length: maxYear - minYear + 1 },
-  //   (_, i) => minYear + i,
-  // )
   const years = [...new Set(PROJECTS.map((p) => p.year))].sort((a, b) => a - b)
 
   const [curIdx, setCurIdx] = useState(years.length - 1)
@@ -50,15 +45,6 @@ export function useProjectFilter(activeProjectMenu?: string) {
     return p.year === curYear
   })
 
-  const activeMonths = new Set<number>()
-  filtered.forEach((p) => {
-    for (let m = p.startMonth; m <= getEndMonth(p); m++) activeMonths.add(m)
-  })
-  const monthStr = [...activeMonths]
-    .sort((a, b) => a - b)
-    .map((m) => `${m}월`)
-    .join(' · ')
-
   return {
     years,
     curIdx,
@@ -68,6 +54,5 @@ export function useProjectFilter(activeProjectMenu?: string) {
     setSelectedProject,
     changeYear,
     filtered,
-    monthStr,
   }
 }

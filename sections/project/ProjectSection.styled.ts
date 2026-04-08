@@ -33,8 +33,8 @@ export const YearLeftBox = styled.div`
   }
 `
 export const YearNum = styled.div`
-  font-size: 26px;
-  font-weight: 900;
+  font-size: 24px;
+  font-weight: 800;
   line-height: 1;
   color: ${COLORS.panelSubTitle};
 `

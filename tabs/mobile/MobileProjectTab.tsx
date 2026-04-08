@@ -3,57 +3,56 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import styled from 'styled-components'
 
-import { COLORS } from '@/constants'
+import { COLORS, PROJECTS } from '@/constants'
 import { getDateLabel, useProjectFilter } from '@/hooks/useProjectFilter'
 import ProjectModal from '@/sections/project/ProjectModal'
 
 export default function MobileProjectTab() {
   const {
     years,
-    curIdx,
     curYear,
     direction,
     selectedProject,
     setSelectedProject,
     changeYear,
     filtered,
-    monthStr,
   } = useProjectFilter()
   return (
     <div className="flex flex-col gap-3 pb-6">
       {/* 연도 필터 카드 */}
       <YearCard>
         <YearLeftBox>
-          <div className="flex items-center gap-2">
-            <NavBtn onClick={() => changeYear(Math.max(0, curIdx - 1))}>
-              ◀
-            </NavBtn>
-            <YearBig>{curYear}</YearBig>
-            <NavBtn
-              onClick={() => changeYear(Math.min(years.length - 1, curIdx + 1))}
-            >
-              ▶
-            </NavBtn>
-          </div>
+          <YearBig>{curYear}</YearBig>
           <YearSub>year</YearSub>
         </YearLeftBox>
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-5">
-            {years.map((y) => (
-              <YearTab
-                key={y}
-                $isActive={y === curYear}
-                onClick={() => changeYear(years.indexOf(y))}
-              >
-                {y}
-              </YearTab>
-            ))}
-          </div>
-          <div className="flex items-center gap-3">
-            <CountBadge>{filtered.length}개</CountBadge>
-            {monthStr && (
-              <span className="text-xs text-gray-400">활동 : {monthStr}</span>
-            )}
+        <div className="flex flex-col gap-3" style={{ flex: 1 }}>
+          <div style={{ display: 'flex', flex: 1 }}>
+            {years.map((y) => {
+              const count = PROJECTS.filter((p) => p.year === y).length
+              return (
+                <YearTabWrapper
+                  key={y}
+                  onClick={() => changeYear(years.indexOf(y))}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    flex: 1,
+                    cursor: 'pointer',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 'clamp(10px, 2.5vw, 12px)',
+                      color: y === curYear ? '#3FB1D7' : '#ccc',
+                    }}
+                  >
+                    {count}개
+                  </span>
+                  <YearTab $isActive={y === curYear}>{y}</YearTab>
+                </YearTabWrapper>
+              )
+            })}
           </div>
         </div>
       </YearCard>
@@ -151,35 +150,23 @@ const YearSub = styled.div`
   color: #aaa;
 `
 
-const NavBtn = styled.button`
-  padding: 1px 3px;
-  font-size: 7px;
-  color: #939391;
+const YearTabWrapper = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer !important;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 2px;
 
-  &:hover {
-    color: ${COLORS.panelSubTitle};
-    background: #e0f4f9;
+  * {
+    cursor: pointer !important;
   }
 `
+
 const YearTab = styled.span<{ $isActive: boolean }>`
-  font-size: 15.5px;
+  font-size: clamp(14px, 4vw, 18px);
   font-weight: ${({ $isActive }) => ($isActive ? 700 : 400)};
   color: ${({ $isActive }) => ($isActive ? COLORS.panelSubTitle : '#aaa')};
   cursor: pointer !important;
-`
-
-const CountBadge = styled.span`
-  padding: 1px 6px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #e07800;
-  white-space: nowrap;
-  background: #fff3e0;
-  border-radius: 4px;
 `
 
 const ProjectCard = styled.div`
