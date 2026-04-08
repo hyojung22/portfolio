@@ -24,8 +24,8 @@ export const SKILLS: SkillCategory[] = [
       { name: 'Next.js', level: '주로 사용' },
       { name: 'Tailwind CSS', level: '주로 사용' },
       { name: 'styled-components', level: '주로 사용' },
-      { name: 'Zustand', level: '주로 사용' },
-      { name: 'framer-motion', level: '주로 사용' },
+      { name: 'Zustand', level: '사용 가능' },
+      { name: 'framer-motion', level: '사용 가능' },
       { name: 'Sass', level: '사용 가능' },
       { name: 'CSS Modules', level: '사용 가능' },
       { name: 'Vite', level: '사용 가능' },
@@ -39,6 +39,7 @@ export const SKILLS: SkillCategory[] = [
       { name: 'Android Studio', level: '사용 가능' },
       { name: 'React Native', level: '사용 가능' },
       { name: 'Firebase', level: '사용 가능' },
+      { name: 'Expo', level: '사용 가능' },
     ],
   },
   {
@@ -53,10 +54,11 @@ export const SKILLS: SkillCategory[] = [
   },
   {
     id: 'tools',
-    label: '툴',
+    label: '기타',
     skills: [
       { name: 'GitHub', level: '주로 사용' },
       { name: 'Figma', level: '주로 사용' },
+      { name: 'Notion', level: '주로 사용' },
       { name: 'Photoshop', level: '사용 가능' },
       { name: 'Illustrator', level: '사용 가능' },
       { name: 'Vercel', level: '사용 가능' },

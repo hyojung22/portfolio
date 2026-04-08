@@ -94,7 +94,7 @@ const NoticeText = styled.span`
   font-size: 14px;
   color: ${COLORS.rightPanelTitle};
 `
-type Category = '개발' | '디자인' | '기타'
+type Category = '개발' | '디자인' | '기타' | '개발·디자인'
 const CategoryBadge = styled.span<{ $category: Category }>`
   padding: 3px 5px;
   font-size: 11px;
@@ -128,6 +128,13 @@ const CategoryBadge = styled.span<{ $category: Category }>`
         background-color: #f3e8fd;
         color: #8a4aaa;
         border: 1px solid #d9b8f0;
+      `
+    }
+    if ($category === '개발·디자인') {
+      return `
+        background-color: #e8f5ee;
+        color: #2a7a5a;
+        border: 1px solid #b8e0cb;
       `
     }
     return `

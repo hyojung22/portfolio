@@ -1,4 +1,4 @@
-export type CertCategory = '개발' | '디자인' | '기타'
+export type CertCategory = '개발' | '디자인' | '기타' | '개발·디자인'
 
 export interface Certificates {
   id: number
@@ -21,7 +21,7 @@ export const CERTIFICATES: Certificates[] = [
     name: '웹디자인개발기능사',
     issuer: '한국산업인력공단',
     date: '2025.09',
-    category: '개발',
+    category: '개발·디자인',
   },
   {
     id: 3,
