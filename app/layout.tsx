@@ -30,6 +30,10 @@ export const metadata: Metadata = {
       '사용자 경험을 먼저 생각하는 개발자 최효정의 포트폴리오입니다.',
     images: ['https://minihompy-portfolio.vercel.app/images/og-image.png'],
   },
+  icons: {
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/manifest.json',
 }
 
 export const viewport: Viewport = {
