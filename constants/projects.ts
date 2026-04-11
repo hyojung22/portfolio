@@ -440,9 +440,9 @@ export const PROJECTS: Project[] = [
     platform: 'Web',
     images: [
       { type: 'single', src: '/images/project/globalgo/globalgo1.png' },
-      { type: 'single', src: '/images/project/globalgo/globalgo2.png' },
-      { type: 'single', src: '/images/project/globalgo/globalgo3.png' },
-      { type: 'single', src: '/images/project/globalgo/globalgo4.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo2-2.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo3-2.png' },
+      { type: 'single', src: '/images/project/globalgo/globalgo4-2.png' },
       { type: 'single', src: '/images/project/globalgo/globalgo5.png' },
     ],
     githubUrl: 'https://github.com/2025-SMHRD-SW-FullStack/Aha_Aha_Proj',
